@@ -1,0 +1,43 @@
+{% extends "@Annonce/Default/layout.html.twig" %}
+{% block content %}
+
+
+    <div class="row page-titles">
+        <div class="col-md-5 align-self-center">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">Annonces</li>
+                <li class="breadcrumb-item active"><a href="{{ path('Importer_module') }}">Importer un module</a></li>
+            </ol>
+        </div>
+        <div class="col-md-7 align-self-center text-right">
+            <div class="d-flex justify-content-end align-items-center">
+
+                <a href="{{ path('Ajouter_annonce/') }}"  type="button" class="btn btn-info "><i class="fa fa-plus-circle"></i> Ajouter</a>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Importer un module</h4>
+                    <form method="post"  enctype="multipart/form-data">
+
+                        {{ form_start(form) }}
+                        <div class="form-group ">
+
+                            <label for="ph" class="control-label">Sélectionner un fichier de type zip </label>
+                            <input type="file" id="ph" class="dropify" data-show-remove="false" name="fich" required/>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i>Ajouter</button>
+                            <a type="button" class="btn btn-secondary" href="{{ path('annonce_homepage') }}">Annuler</a>
+                        </div>
+                        {{ form_end (form) }}
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

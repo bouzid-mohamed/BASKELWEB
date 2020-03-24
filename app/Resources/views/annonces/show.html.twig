@@ -1,0 +1,76 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Annonce</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Annid</th>
+                <td>{{ annonce.annId }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ annonce.description }}</td>
+            </tr>
+            <tr>
+                <th>Numtel</th>
+                <td>{{ annonce.numTel }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{% if annonce.date %}{{ annonce.date|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Gouvernorat</th>
+                <td>{{ annonce.gouvernorat }}</td>
+            </tr>
+            <tr>
+                <th>Delegation</th>
+                <td>{{ annonce.delegation }}</td>
+            </tr>
+            <tr>
+                <th>Address</th>
+                <td>{{ annonce.address }}</td>
+            </tr>
+            <tr>
+                <th>Photo</th>
+                <td>{{ annonce.photo }}</td>
+            </tr>
+            <tr>
+                <th>Signals</th>
+                <td>{{ annonce.signals }}</td>
+            </tr>
+            <tr>
+                <th>Type</th>
+                <td>{{ annonce.type }}</td>
+            </tr>
+            <tr>
+                <th>Prix</th>
+                <td>{{ annonce.prix }}</td>
+            </tr>
+            <tr>
+                <th>Prixheure</th>
+                <td>{{ annonce.prixHeure }}</td>
+            </tr>
+            <tr>
+                <th>Dispo</th>
+                <td>{{ annonce.dispo }}</td>
+            </tr>
+            <tr>
+                <th>Nbrdispo</th>
+                <td>{{ annonce.nbrdispo }}</td>
+            </tr>
+            <tr>
+                <th>Prixjour</th>
+                <td>{{ annonce.prixJour }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('Annonces_index') }}">Back to the list</a>
+        </li>
+    </ul>
+{% endblock %}

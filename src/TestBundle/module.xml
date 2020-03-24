@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<module>
+   
+      <nom>Test</nom>
+      <version>1</version>
+      <href>http://127.0.0.1:8000/Test</href>
+
+</module>

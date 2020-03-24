@@ -1,0 +1,12 @@
+Annonces_index:
+    path:     /
+    defaults: { _controller: "AnnonceBundle:Annonces:index" }
+    methods:  GET
+
+Annonces_show:
+    path:     /{annId}/show
+    defaults: { _controller: "AnnonceBundle:Annonces:show" }
+    methods:  GET
+
+
+

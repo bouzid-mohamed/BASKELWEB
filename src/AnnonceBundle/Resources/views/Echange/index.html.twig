@@ -1,0 +1,72 @@
+{% extends "@Annonce/Default/layout.html.twig" %}
+{% block content %}
+    <div class="row page-titles">
+        <div class="col-md-5 align-self-center">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">Annonces</li>
+                <li class="breadcrumb-item active"><a href="{{ path('annonce_Echange') }}">Echange</a></li>
+            </ol>
+        </div>
+        <div class="col-md-7 align-self-center text-right">
+            <div class="d-flex justify-content-end align-items-center">
+
+                <a href="{{ path('Ajouter_annonceE/') }}"  type="button" class="btn btn-info "><i class="fa fa-plus-circle"></i> Ajouter</a>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <!-- Column -->
+        <div class="col-lg-12">
+            {% set i = 0 %}
+            {% for flash_message in app.session.flashBag.get('success') %}
+                {% if(i==0) %}
+                    <div class="alert alert-success alert-rounded"> <img src="../uploads/Annonces/bgapp.jpg" width="30" class="img-circle" alt="img">    {{ flash_message }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
+                    </div>
+                    {% set i=1 %}
+                {% endif %}
+            {% endfor %}
+
+
+            <div class="card">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table product-overview" id="myTable">
+                            <thead>
+                            <tr>
+                                <th>Nom</th>
+                                <th>Photo</th>
+                                <th>Gouvernerat</th>
+                                <th>Delegation</th>
+                                <th>Description</th>
+                                <th>Date</th>
+                                <th>Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for annonce in annonces %}
+                                <tr>
+                                    <td>{{ annonce.user.nom }}</td>
+                                    <td> <img src="{{ asset('uploads/Annonces/')~annonce.photo }}" alt="iMac" width="80"> </td>
+                                    <td>{{ annonce.gouvernorat}}</td>
+                                    <td>{{ annonce.delegation}}</td>
+                                    <td>{{ annonce.description}}</td>
+                                    <td> {{ annonce.date|date("m/d/Y")}}</td>
+                                    <td><a href="{{ path('afficher_annonceE/', { 'id': annonce.annId }) }}" title="Afficher" data-toggle="tooltip"><i class="ti-eye"></i></a>
+                                        <a href="{{ path('edit_annonceE/', { 'id': annonce.annId }) }}" class="text-inverse p-r-10" data-toggle="tooltip" title="Editer"><i class="ti-marker-alt"></i></a>
+                                        <a href="{{ path('delete_annonceE/', { 'id': annonce.annId }) }}" title="Supprimer" data-toggle="tooltip" onclick="return confirm('Voulez vous supprimer cette annonce ?')" ><i class="ti-trash"></i></a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Column -->
+    </div>
+
+
+{% endblock %}

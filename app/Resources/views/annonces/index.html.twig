@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Annonces list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Annid</th>
+                <th>Description</th>
+                <th>Numtel</th>
+                <th>Date</th>
+                <th>Gouvernorat</th>
+                <th>Delegation</th>
+                <th>Address</th>
+                <th>Photo</th>
+                <th>Signals</th>
+                <th>Type</th>
+                <th>Prix</th>
+                <th>Prixheure</th>
+                <th>Dispo</th>
+                <th>Nbrdispo</th>
+                <th>Prixjour</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for annonce in annonces %}
+            <tr>
+                <td><a href="{{ path('Annonces_show', { 'annId': annonce.annId }) }}">{{ annonce.annId }}</a></td>
+                <td>{{ annonce.description }}</td>
+                <td>{{ annonce.numTel }}</td>
+                <td>{% if annonce.date %}{{ annonce.date|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ annonce.gouvernorat }}</td>
+                <td>{{ annonce.delegation }}</td>
+                <td>{{ annonce.address }}</td>
+                <td>{{ annonce.photo }}</td>
+                <td>{{ annonce.signals }}</td>
+                <td>{{ annonce.type }}</td>
+                <td>{{ annonce.prix }}</td>
+                <td>{{ annonce.prixHeure }}</td>
+                <td>{{ annonce.dispo }}</td>
+                <td>{{ annonce.nbrdispo }}</td>
+                <td>{{ annonce.prixJour }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('Annonces_show', { 'annId': annonce.annId }) }}">show</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    
+{% endblock %}

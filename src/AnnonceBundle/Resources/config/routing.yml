@@ -1,0 +1,60 @@
+annonce_homepage:
+    path:     /
+    defaults: { _controller: AnnonceBundle:Annoncev:index }
+edit_annonce/:
+    path:     /edit/{id}
+    defaults: { _controller: AnnonceBundle:Annoncev:edit }
+delete_annonce/:
+    path:     /delete/{id}
+    defaults: { _controller: AnnonceBundle:Annoncev:delete }
+Ajouter_annonce/:
+    path:     /Ajouter_annonce
+    defaults: { _controller: AnnonceBundle:Annoncev:ajouter }
+afficher_annonce/:
+    path:     /Afficher/{id}
+    defaults: { _controller: AnnonceBundle:Annoncev:show }
+Test_annonce/:
+    path:     /Test_annonce
+    defaults: { _controller: AnnonceBundle:Annoncev:test }
+annonce_Echange:
+    path:     /Echange
+    defaults: { _controller: AnnonceBundle:AnnonceE:index }
+edit_annonceE/:
+    path:     /editE/{id}
+    defaults: { _controller: AnnonceBundle:AnnonceE:edit }
+delete_annonceE/:
+    path:     /deleteE/{id}
+    defaults: { _controller: AnnonceBundle:AnnonceE:delete }
+Ajouter_annonceE/:
+    path:     /AjouterE_annonce
+    defaults: { _controller: AnnonceBundle:AnnonceE:ajouter }
+afficher_annonceE/:
+    path:     /AfficherE/{id}
+    defaults: { _controller: AnnonceBundle:AnnonceE:show }
+annonce_Location:
+    path:     /Location
+    defaults: { _controller: AnnonceBundle:AnnonceL:index }
+edit_annonceL/:
+    path:     /editL/{id}
+    defaults: { _controller: AnnonceBundle:AnnonceL:edit }
+delete_annonceL/:
+    path:     /deleteL/{id}
+    defaults: { _controller: AnnonceBundle:AnnonceL:delete }
+Ajouter_annonceL/:
+    path:     /AjouterL_annonce
+    defaults: { _controller: AnnonceBundle:AnnonceL:ajouter }
+afficher_annonceL/:
+    path:     /AfficherL/{id}
+    defaults: { _controller: AnnonceBundle:AnnonceL:show }
+Statistique:
+    path:     /Statistique
+    defaults: { _controller: AnnonceBundle:Statistique:index }
+Importer_module:
+    path:     /upload
+    defaults: { _controller: AnnonceBundle:Upload:index }
+Annonces_all:
+    path:     /all
+    defaults: { _controller: AnnonceBundle:annonce:index }
+
+
+

@@ -1,0 +1,80 @@
+{% extends "@Annonce/Default/layout.html.twig" %}
+{% block content %}
+    <div class="row page-titles">
+        <div class="col-md-5 align-self-center">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">Annonces</li>
+                <li class="breadcrumb-item active"><a href="{{ path('annonce_Echange') }}">Echange</a></li>
+                <li class="breadcrumb-item active"><a href="{{ path('afficher_annonceE/', { 'id': annonce.annId }) }}">Afficher</a></li>
+            </ol>
+        </div>
+        <div class="col-md-7 align-self-center text-right">
+            <div class="d-flex justify-content-end align-items-center">
+
+                <a href="{{ path('Ajouter_annonceE/') }}"  type="button" class="btn btn-info "><i class="fa fa-plus-circle"></i> Ajouter</a>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <!-- Column -->
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="">Velo à vendre</h3>
+                    <h6 class="card-subtitle"> Annonce crée par {{ annonce.user.nom }}</h6>
+                    <div class="row">
+                        <div class="col-lg-3 col-md-3 col-sm-6">
+                            <div class="white-box text-center"> <img src="{{ asset('uploads/Annonces/')~annonce.photo }}" class="img-responsive"> </div>
+                        </div>
+                        <div class="col-lg-9 col-md-9 col-sm-6">
+                            <h4 class="box-title m-t-40">Vélo description</h4>
+                            <p>{{ annonce.description}}</p>
+
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <h3 class="box-title m-t-40">Informations Générales</h3>
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <tbody>
+                                    <tr>
+                                        <td width="390">Annonce Id</td>
+                                        <td>{{ annonce.annId  }} </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="390">Vendeur</td>
+                                        <td>{{ annonce.user.nom }} </td>
+                                    </tr>
+                                    <tr>
+                                        <td> Num Tel</td>
+                                        <td> {{ annonce.numtel }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Gouvernerat</td>
+                                        <td>{{annonce.gouvernorat}} </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Délégation</td>
+                                        <td> {{annonce.delegation}} </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Addresse</td>
+                                        <td> {{annonce.address}} </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Date de dernière mise à jour</td>
+                                        <td>  {{ annonce.date|date("m/d/Y")}} </td>
+                                    </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Column -->
+    </div>
+
+
+{% endblock %}

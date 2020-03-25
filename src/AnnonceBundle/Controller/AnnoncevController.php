@@ -6,8 +6,9 @@ use  AnnonceBundle\Entity\Annonces;
 use  AnnonceBundle\Entity\User;
 use AnnonceBundle\Form\AnnoncesType;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\Filesystem\Filesystem;
+
+
+use Doctrine\ORM\Query\Expr;
 
 class AnnoncevController extends Controller
 {

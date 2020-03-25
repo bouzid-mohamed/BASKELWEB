@@ -55,6 +55,10 @@ Importer_module:
 Annonces_all:
     path:     /all
     defaults: { _controller: AnnonceBundle:annonce:index }
+Annonces_allVente:
+    path:     /all_Vente
+    defaults: { _controller: AnnonceBundle:FAnnonceV:index }
+
 
 
 

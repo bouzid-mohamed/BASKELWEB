@@ -1,0 +1,121 @@
+{% extends "@Annonce/FAnnonces/layout.html.twig" %}
+{% block content %}
+
+
+
+    <div class="bikes">
+
+            {%  if(nbr>4) %}
+        <div class="bikes">
+            <a href="{{ path('Annonces_allVente') }}" >  <h3>Vos Annonces</h3></a>
+            <div class="bikes-grids">
+                <ul id="flexiselDemo1">
+                    {% set i = 0%}
+                    {% for annonce in annoncesuser %}
+                        {% if(i<4) %}
+                            <li>
+                                <img src="{{ asset('uploads/Annonces/')~annonce.photo }}" height="150px" width="90px" alt=""/>
+                                <div class="bike-info">
+                                    <div class="model">
+                                        <h4>Prix<span>{{ annonce.prix }} DT</span></h4>
+                                    </div>
+                                    <div class="model-info">
+
+                                        <a href="bicycles.html">Consulter</a>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="viw">
+                                    <a href="bicycles.html">Voir Tous</a>
+                                </div>
+                            </li>
+                            {% set i=i+1 %}
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+                <script type="text/javascript">
+                    $(window).load(function() {
+                        $("#flexiselDemo1").flexisel({
+                            visibleItems: 3,
+                            animationSpeed: 1000,
+                            autoPlay: true,
+                            autoPlaySpeed: 3000,
+                            pauseOnHover:true,
+                            enableResponsiveBreakpoints: true,
+                            responsiveBreakpoints: {
+                                portrait: {
+                                    changePoint:480,
+                                    visibleItems: 1
+                                },
+                                landscape: {
+                                    changePoint:640,
+                                    visibleItems: 2
+                                },
+                                tablet: {
+                                    changePoint:768,
+                                    visibleItems: 3
+                                }
+                            }
+                        });
+                    });
+                </script>
+                <script type="text/javascript"  src="{{ asset('front/js/jquery.flexisel.js') }}"></script>
+            </div>
+        </div>
+     {% endif %}
+        {% if(nbr>0) %}
+        {% if(nbr<4) %}
+            <div class="mountain-sec">
+                <h2>Vos Annonces </h2>
+
+
+                {% for annonce in annoncesuser %}
+                    <a href="single.html"><div class="bike">
+                            <img src="{{ asset('uploads/Annonces/')~annonce.photo }}" height="150px" width="90px" alt=""/>
+                            <div class="bike-cost">
+                                <div class="bike-mdl">
+                                    <h4>{{ annonce.prix }} Dt<span>{{ annonce.date|date("m/d/Y")}}</span></h4>
+                                </div>
+                                <div class="bike-cart">
+                                    <a class="buy" href="single.html">Consulter</a>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="fast-viw">
+                                <a href="single.html">Consulter détails</a>
+                            </div>
+                        </div></a> {% endfor %}
+                <div class="clearfix"></div>
+            </div>
+        {% endif %}
+        {% endif %}
+
+
+
+
+        <div class="singlespeed-sec">
+            <h2>Tous les Annonces Vente </h2>
+
+
+            {% for annonce in annoncesv %}
+            <a href="single.html"><div class="bike">
+                    <img src="{{ asset('uploads/Annonces/')~annonce.photo }}" height="150px" width="90px" alt=""/>
+                    <div class="bike-cost">
+                        <div class="bike-mdl">
+                            <h4>{{ annonce.prix }} Dt<span>{{ annonce.date|date("m/d/Y")}}</span></h4>
+                        </div>
+                        <div class="bike-cart">
+                            <a class="buy" href="single.html">Consulter</a>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="fast-viw">
+                        <a href="">Consulter détails</a>
+                    </div>
+                </div></a> {% endfor %}
+            <div class="clearfix"></div>
+        </div>
+
+
+    </div>
+{% endblock %}

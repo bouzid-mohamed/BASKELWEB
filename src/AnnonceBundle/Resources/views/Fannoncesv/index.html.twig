@@ -7,7 +7,11 @@
 
             {%  if(nbr>4) %}
         <div class="bikes">
-            <a href="{{ path('Annonces_allVente') }}" >  <h3>Vos Annonces</h3></a>
+            <div class="singlespeed-sec">
+                <div class="product-head">
+                    <a href = "{{ path('FAddVente') }}">   Ajouter Annonce</a> <span></span>
+                </div>
+            <a href="{{ path('Ann_user/', { 'id':  user }) }}" >  <h3>Mes Annonces</h3></a>
             <div class="bikes-grids">
                 <ul id="flexiselDemo1">
                     {% set i = 0%}
@@ -105,17 +109,15 @@
                             <h4>{{ annonce.prix }} Dt<span>{{ annonce.date|date("m/d/Y")}}</span></h4>
                         </div>
                         <div class="bike-cart">
-                            <a class="buy" href="single.html">Consulter</a>
+                            <a class="buy"href="{{ path('show_annoncev/', { 'id': annonce.annId }) }}">Consulter</a>
                         </div>
                         <div class="clearfix"></div>
                     </div>
                     <div class="fast-viw">
-                        <a href="">Consulter détails</a>
+                        <a href="{{ path('show_annoncev/', { 'id': annonce.annId }) }}">Consulter détails</a>
                     </div>
                 </div></a> {% endfor %}
             <div class="clearfix"></div>
         </div>
-
-
     </div>
 {% endblock %}

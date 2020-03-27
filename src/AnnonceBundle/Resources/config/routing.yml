@@ -58,7 +58,18 @@ Annonces_all:
 Annonces_allVente:
     path:     /all_Vente
     defaults: { _controller: AnnonceBundle:FAnnonceV:index }
-
+show_annoncev/:
+  path:     /Show_v/{id}
+  defaults: { _controller: AnnonceBundle:FAnnonceV:show }
+Ann_user/:
+    path:     /foruser/{id}
+    defaults: { _controller: AnnonceBundle:FAnnonceV:showuser }
+delete_Fannoncev/:
+    path:     /deleteFV/{id}
+    defaults: { _controller: AnnonceBundle:FAnnonceV:delete }
+FAddVente:
+    path:     /Add_Annonce
+    defaults: { _controller: AnnonceBundle:FAnnonceV:Ajouter }
 
 
 

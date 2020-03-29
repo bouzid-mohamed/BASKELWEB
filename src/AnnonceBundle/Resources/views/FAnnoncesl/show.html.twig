@@ -1,0 +1,134 @@
+{% extends "@Annonce/FAnnonces/layout.html.twig" %}
+{% block content %}
+
+    <div class="product">
+        <div class="container">
+            <div class="ctnt-bar cntnt">
+                <div class="content-bar">
+                    <div class="single-page">
+                        <div class="product-head">
+                            <a href="{{ path('Annonces_allLocation') }}">Back</a> <span></span>
+                        </div>
+                        <!--Include the Etalage files-->
+                        <link rel="stylesheet" href="{{ asset('front/css/etalage.css') }}">
+                        <script src="{{ asset('front/js/jquery.etalage.min.js') }}"></script>
+                        <script>
+                            jQuery(document).ready(function ($) {
+
+                                $('#etalage').etalage({
+                                    thumb_image_width: 400,
+                                    thumb_image_height: 400,
+                                    source_image_width: 800,
+                                    source_image_height: 1000,
+                                    show_hint: true,
+                                    click_callback: function (image_anchor, instance_id) {
+                                        alert('Callback example:\nYou clicked on an image with the anchor: "' + image_anchor + '"\n(in Etalage instance: "' + instance_id + '")');
+                                    }
+                                });
+
+                            });
+                        </script>
+                        <!--//details-product-slider-->
+                        <div class="details-left-slider">
+                            <div class="grid images_3_of_2">
+                                <ul id="etalage">
+                                    <li>
+                                        <img class="etalage_thumb_image"
+                                             src="{{ asset('uploads/Annonces/')~annonce.photo }}"
+                                             class="img-responsive"/>
+                                        <img class="etalage_source_image"
+                                             src="{{ asset('uploads/Annonces/')~annonce.photo }}" class="img-responsive"
+                                             title=""/>
+
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="details-left-info">
+                            <h3>Velo à louer </h3>
+                            <h4></h4>
+                            <p>{{ annonce.prixjour }} <label>Dt par jour</label></p>
+                            <p>{{ annonce.prixheure }} <label>Dt par heure</label></p>
+
+
+                            <div class="bike-type">
+                                <table style="border-spacing: 20px ;border-collapse: separate">
+                                    <tr>
+                                        <h5>
+                                            <td><strong>Vendeur</strong></td>
+                                            <td><span style="color:Purple">{{ annonce.user.nom }} </span></td>
+                                        </h5>
+                                    </tr>
+                                    <tr>
+                                        <h5>
+                                            <td><strong>Num Tel</strong></td>
+                                            <td><span style="color:Purple">{{ annonce.numtel }} </span></td>
+                                        </h5>
+                                        </h5> </tr>
+                                    <tr>
+                                        <h5>
+                                            <td><strong>Gouvernerat</strong></td>
+                                            <td><span style="color:Purple">{{ annonce.gouvernorat }} </span></td>
+                                        </h5>
+                                    </tr>
+                                    <tr>
+                                        <h5>
+                                            <td><strong>Délegatiion</strong></td>
+                                            <td><span style="color:Purple">{{ annonce.delegation }} </span></td>
+                                        </h5>
+                                    </tr>
+                                    <tr>
+                                        <h5>
+                                            <td><strong>Addresse</strong></td>
+                                            <td><span style="color:Purple">{{ annonce.address }} </span></td>
+                                        </h5>
+                                    </tr>
+                                    <tr>
+                                        <h5>
+                                            <td><strong>Mettre à jour le </strong></td>
+                                            <td><span style="color:Purple">{{ annonce.date|date("m/d/Y") }}  </span>
+                                            </td>
+                                        </h5>
+                                    </tr>
+                                </table>
+
+                            </div>
+                            <h5>Description :</h5>
+                            <p class="desc">{{ annonce.description }}</p>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="single-bottom2">
+                <h6>Annonces Reliés</h6>
+                {% set i = 0 %}
+                {% for annonce in annoncesv %}
+                    {% if(i<3) %}
+                        <div class="product">
+                            <div class="product-desc">
+                                <div class="product-img product-img2">
+                                    <a href="{{ path('show_annoncev/', { 'id': annonce.annId }) }}"> <img
+                                                src="{{ asset('uploads/Annonces/')~annonce.photo }}"
+                                                class="img-responsive " alt=""/> </a>
+                                </div>
+                                <div class="prod1-desc">
+                                    <h5>{{ annonce.user.nom }}</h5>
+                                    <p class="product_descr"> {{ annonce.description }} </p>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="product_price">
+                                <span class="price-access"> {{ annonce.prixjour }}/{{ annonce.prixheure }} Dt</span>
+                                <a class="button1" href="{{ path('show_annoncel/', { 'id': annonce.annId }) }}"><span>Consulter</span></a>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        {% set i=i+1 %}
+                    {% endif %}
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,327 @@
+{% extends "@Annonce/FAnnonces/layout.html.twig" %}
+{% block content %}
+    <script>
+        function myfunction() {
+            var e = document.getElementById("gouva");
+            var s = document.getElementById('delega');
+            var result = e.options[e.selectedIndex].text;
+            if (result == "Tunis") {
+                while (s.length > 0) {
+                    s.remove(0);
+                }
+
+                var sel = document.getElementById('delega');
+                var opt = document.createElement('option');
+                opt.text = "Ain Zaghouan";
+                sel.add(opt);
+                var opt1 = document.createElement("option");
+                opt1.text = "Bab Souika";
+                sel.add(opt1);
+                var opt2 = document.createElement('option');
+                opt2.text = "Beb Bhar";
+                sel.add(opt2);
+                var opt3 = document.createElement("option");
+                opt3.text = "El Kabaria";
+                sel.add(opt3);
+                var opt4 = document.createElement('option');
+                opt4.text = "El Kram";
+                sel.add(opt4);
+                var opt5 = document.createElement("option");
+                opt5.text = "El Menzah";
+                sel.add(opt5);
+                var opt6 = document.createElement('option');
+                opt6.text = "El Omrane";
+                sel.add(opt6);
+                var opt7 = document.createElement("option");
+                opt7.text = "El Omrane Superieur";
+                sel.add(opt7);
+                var opt8 = document.createElement('option');
+                opt8.text = "Karthage";
+                sel.add(opt8);
+                var opt9 = document.createElement("option");
+                opt9.text = "La Goulette";
+                sel.add(opt9);
+                var opt10 = document.createElement("option");
+                opt10.text = "La Marsa";
+                sel.add(opt10);
+
+            } else if (result == "Aryana") {
+                while (s.length > 0) {
+                    s.remove(0);
+                }
+                var sel = document.getElementById('delega');
+                var opt = document.createElement('option');
+                opt.text = "Ariana Ville";
+                sel.add(opt);
+                var opt1 = document.createElement("option");
+                opt1.text = "Ettadhamen";
+                sel.add(opt1);
+                var opt2 = document.createElement('option');
+                opt2.text = "Kalaat Landlous";
+                sel.add(opt2);
+                var opt3 = document.createElement("option");
+                opt3.text = "La Soukra";
+                sel.add(opt3);
+                var opt4 = document.createElement('option');
+                opt4.text = "Mnihla";
+                sel.add(opt4);
+                var opt5 = document.createElement("option");
+                opt5.text = "Raoued";
+                sel.add(opt5);
+                var opt6 = document.createElement('option');
+                opt6.text = "Sidi Thabet";
+                sel.add(opt6);
+            } else {
+                while (s.length > 0) {
+                    s.remove(0);
+                }
+                var sel = document.getElementById('delega');
+                var opt = document.createElement('option');
+                opt.text = "";
+                sel.add(opt);
+
+            }
+        }
+
+        function fun() {
+
+        }
+
+    </script>
+
+    <link rel="stylesheet" href="{{ asset('assets/node_modules/dropify/dist/css/dropify.min.css') }}">
+
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="{{ asset('form/images/icons/favicon.ico') }}"/>
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('form/vendor/bootstrap/css/bootstrap.min.css') }}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('form/fonts/font-awesome-4.7.0/css/font-awesome.min.css') }}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css"
+          href="{{ asset('form/fonts/iconic/css/material-design-iconic-font.min.css') }}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('form/vendor/animate/animate.css') }}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('form/vendor/css-hamburgers/hamburgers.min.css') }}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('form/vendor/animsition/css/animsition.min.css') }}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('form/vendor/select2/select2.min.css') }}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('form/vendor/daterangepicker/daterangepicker.css') }}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('form/vendor/noui/nouislider.min.css') }}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{{ asset('form/css/util.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('form/css/main.css') }}">
+
+    <div class="container-contact100" style="background-image: url('../front/images/a.jpg'); ">
+        <div class="wrap-contact100">
+            <form class="contact100-form validate-form" method="post" enctype="multipart/form-data">
+                {{ form_start(form) }}
+                <span class="contact100-form-title">
+					Modifier Votre Annonce
+				</span>
+
+                <div class="wrap-input100  bg1">
+                    <span class="label-input100">Description *</span>
+                    <textarea type="text" class="input100" name="desc" minlength="4" maxlength="300"
+                              required>{{ annonce.description }} </textarea>
+                </div>
+
+
+
+                <div class="wrap-input100 bg1 rs1-wrap-input100">
+                    <span class="label-input100">Prix jours *</span>
+                    <input class="input100" type="number" min="1" minlength="1" maxlength="5" id="pr" name="prixjour"
+                           value="{{ annonce.prixjour }}" required>
+                </div>
+                <div class="wrap-input100 bg1 rs1-wrap-input100">
+                    <span class="label-input100">Prix heure *</span>
+                    <input class="input100" type="number" min="1" minlength="1" maxlength="5" id="pr" name="prixheure"
+                           value="{{ annonce.prixheure }}" required>
+                </div>
+                {% if annonce.gouvernorat =='Tunis' %}
+                    <div class="wrap-input100 input100-select bg1 rs1-wrap-input100">
+                        <span class="label-input100">Gouvernerat *</span>
+                        <div>
+                            <select id="gouva" class="input100" name="gouvernerat" onclick="myfunction()" required>
+                                <option value="Tunis" selected>Tunis</option>
+                                <option value="Aryana">Aryana</option>
+                            </select>
+                            <div class="dropDownSelect2"></div>
+                        </div>
+                    </div>
+                    <div class="wrap-input100 input100-select bg1 rs1-wrap-input100">
+                        <span class="label-input100">Delagation *</span>
+                        <div>
+                            <select id="delega" class="input100" name="delegation" required>
+                                {% for delegas in delegs %}
+                                    {% if annonce.delegation == delegas.nomDeleg %}
+                                        <option value="{{ delegas.nomDeleg }}" selected>{{ delegas.nomDeleg }}</option>
+                                    {% elseif annonce.delegation != delegas.nomDeleg %}
+                                        <option value="{{ delegas.nomDeleg }}">{{ delegas.nomDeleg }}</option>
+                                    {% endif %}
+                                {% endfor %}
+                            </select>
+
+                            <div class="dropDownSelect2"></div>
+                        </div>
+                    </div>
+                {% elseif annonce.gouvernorat =='Aryana' %}
+                    <div class="wrap-input100 input100-select bg1 rs1-wrap-input100">
+                        <span class="label-input100">Gouvernerat *</span>
+                        <div>
+                            <select id="gouva" class="input100" name="gouvernerat" onclick="myfunction()" required>
+                                <option value="Tunis">Tunis</option>
+                                <option value="Aryana" selected>Aryana</option>
+                            </select>
+                            <div class="dropDownSelect2"></div>
+                        </div>
+                    </div>
+                    <div class="wrap-input100 input100-select bg1 rs1-wrap-input100">
+                        <span class="label-input100">Delagation *</span>
+                        <div>
+                            <select id="delega" class="input100" name="delegation" required>
+                                {% for delegas in delegas %}
+                                    {% if annonce.delegation == delegas.nomDeleg %}
+                                        <option value="{{ delegas.nomDeleg }}" selected>{{ delegas.nomDeleg }}</option>
+                                    {% elseif annonce.delegation != delegas.nomDeleg %}
+                                        <option value="{{ delegas.nomDeleg }}">{{ delegas.nomDeleg }}</option>
+                                    {% endif %}
+                                {% endfor %}
+                            </select>
+
+                            <div class="dropDownSelect2"></div>
+                        </div>
+                    </div>
+                {% endif %}
+
+
+                <div class="wrap-input100   bg1 rs1-wrap-input100 ">
+                    <span class="label-input100">Addresse *</span>
+                    <input class="input100" type="text" id="adr" name="address" minlength="4" maxlength="50"
+                           value="{{ annonce.address }}" required>
+                </div>
+                <div class="wrap-input100  bg1 rs1-wrap-input100">
+                    <span class="label-input100">Num Tel *</span>
+                    <input class="input100" type="number" name="numtel" min="10000000" max="99999999"
+                           value="{{ annonce.numtel }}" required>
+                </div>
+                <div class="wrap-input100 validate-input bg0 rs1-alert-validate">
+                    <span class="label-input100">Photo *</span>
+                    <input type="file" id="ph" class="dropify" data-show-remove="false" name="photo"
+                           accept="image/x-png,image/gif,image/jpeg"
+                           data-default-file="{{ asset('uploads/Annonces/')~annonce.photo }}"/>
+                </div>
+
+                <div class="container-contact100-form-btn">
+                    <button type="submit" class="contact100-form-btn">
+						<span>
+							Modifier
+							<i class="fa fa-long-arrow-right m-l-7" aria-hidden="true"></i>
+						</span>
+                    </button>
+                </div>
+                <div class="container-contact100-form-btn">
+                    <a href="{{ path('Ann_userl/', { 'id':  user }) }}" class="contact100-form-btn" style="color: white">Annuler</a>
+                    <span>
+
+
+						</span>
+                    </button>
+                </div>
+                {{ form_end (form) }}
+            </form>
+        </div>
+    </div>
+    <script src="{{ asset('assets/node_modules/dropify/dist/js/dropify.min.js') }}"></script>
+    <!--===============================================================================================-->
+    <script src="{{ asset('form/vendor/animsition/js/animsition.min.js') }}"></script>
+    <!--===============================================================================================-->
+    <script src="{{ asset('form/vendor/bootstrap/js/popper.js') }}"></script>
+    <script src="{{ asset('form/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+    <!--===============================================================================================-->
+    <script src="{{ asset('form/vendor/select2/select2.min.js') }}"></script>
+    <script>
+        $(".js-select2").each(function () {
+            $(this).select2({
+                minimumResultsForSearch: 20,
+                dropdownParent: $(this).next('.dropDownSelect2')
+            });
+
+
+            $(".js-select2").each(function () {
+                $(this).on('select2:close', function (e) {
+                    if ($(this).val() == "Please chooses") {
+                        $('.js-show-service').slideUp();
+                    } else {
+                        $('.js-show-service').slideUp();
+                        $('.js-show-service').slideDown();
+                    }
+                });
+            });
+        })
+    </script>
+    <script src="{{ asset('form/vendor/daterangepicker/moment.min.js') }}"></script>
+    <script src="{{ asset('form/vendor/daterangepicker/daterangepicker.js') }}"></script>
+    <!--===============================================================================================-->
+    <script src="{{ asset('form/vendor/countdowntime/countdowntime.js') }}"></script>
+    <!--===============================================================================================-->
+    <script src="{{ asset('form/js/main.js') }}"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+        gtag('config', 'UA-23581568-13');
+    </script>
+    <script>
+        $(document).ready(function () {
+            // Basic
+            $('.dropify').dropify();
+
+            // Translated
+            $('.dropify-fr').dropify({
+                messages: {
+                    default: 'Glissez-déposez un fichier ici ou cliquez',
+                    replace: 'Glissez-déposez un fichier ou cliquez pour remplacer',
+                    remove: 'Supprimer',
+                    error: 'Désolé, le fichier trop volumineux'
+                }
+            });
+
+            // Used events
+            var drEvent = $('#input-file-events').dropify();
+
+            drEvent.on('dropify.beforeClear', function (event, element) {
+                return confirm("Do you really want to delete \"" + element.file.name + "\" ?");
+            });
+
+            drEvent.on('dropify.afterClear', function (event, element) {
+                alert('File deleted');
+            });
+
+            drEvent.on('dropify.errors', function (event, element) {
+                console.log('Has Errors');
+            });
+
+            var drDestroy = $('#input-file-to-destroy').dropify();
+            drDestroy = drDestroy.data('dropify')
+            $('#toggleDropify').on('click', function (e) {
+                e.preventDefault();
+                if (drDestroy.isDropified()) {
+                    drDestroy.destroy();
+                } else {
+                    drDestroy.init();
+                }
+            })
+        });
+    </script>
+{% endblock %}

@@ -58,7 +58,8 @@
     </div>
     <!--Annonces-->
     <div class="bikes">
-        <h3>Annonce Location</h3>
+        <a href="{{ path('Annonces_allLocation') }}" >  <h3>Annonces Location</h3></a>
+
         <div class="bikes-grids">
             <ul id="flexiselDemo2">
                 {% set i = 0 %}
@@ -117,7 +118,7 @@
         </div>
     </div>
     <div class="bikes">
-        <h3>Annonce Echange</h3>
+        <h3><a href="{{ path('Annonces_allEchanges') }}">Annonce Echange</a></h3>
         <div class="bikes-grids">
             <ul id="flexiselDemo3">
                 {% set i = 0 %}

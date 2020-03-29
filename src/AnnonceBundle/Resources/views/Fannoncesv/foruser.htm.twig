@@ -24,7 +24,7 @@
                         <div class="clearfix"></div>
                     </div>
                     <div class="fast-viw">
-                        <a href="1" style="background-color: #00b286;" >Edit</a>
+                        <a href="{{ path('update_annoncev/', { 'id': annonce.annId }) }}" style="background-color: #00b286;" >Edit</a>
                         <a href="{{ path('delete_Fannoncev/', { 'id': annonce.annId }) }}" style="background-color: red;"onclick="return confirm('Voulez vous supprimer cette annonce ?')">Delete</a>
                     </div>
                 </div></a>

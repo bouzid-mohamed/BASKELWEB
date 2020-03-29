@@ -1,0 +1,83 @@
+{% extends "@Annonce/Default/layout.html.twig" %}
+{% block content %}
+    <div class="row page-titles">
+        <div class="col-md-5 align-self-center">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">Locations</li>
+                <li class="breadcrumb-item active"><a href="{{ path('Location') }}">Velos</a></li>
+            </ol>
+        </div>
+        <div class="col-md-7 align-self-center text-right">
+            <div class="d-flex justify-content-end align-items-center">
+
+                <a href="{{ path('Ajouter_velo/') }}"  type="button" class="btn btn-info "><i class="fa fa-plus-circle"></i> Ajouter</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- Column -->
+        <div class="col-lg-12">
+            {% set i = 0 %}
+            {% for flash_message in app.session.flashBag.get('success') %}
+                {% if(i==0) %}
+                    <div class="alert alert-success alert-rounded"> <img src="../uploads/Annonces/bgapp.jpg" width="30" class="img-circle" alt="img">    {{ flash_message }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
+                    </div>
+                    {% set i=1 %}
+                {% endif %}
+            {% endfor %}
+
+
+            <div class="card">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table product-overview" id="myTable">
+                            <thead>
+                            <tr>
+                                <th>Image</th>
+                                <th>Points De Relais</th>
+                                <th>Matricule</th>
+                                <th>Modele</th>
+                                <th>Constructeur</th>
+                                <th>Prix</th>
+                                <th>Etat</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for velos in velo %}
+                                <tr>
+                                    <td> <img src="{{ asset('uploads/Annonces/')~velos.image }}" alt="iMac" width="80"> </td>
+                                    <td>{{ velos.pointRelais.nom}}</td>
+                                    <td>{{ velos.matricule}}</td>
+                                    <td>{{ velos.model}}</td>
+                                    <td>{{ velos.constructeur}}</td>
+                                    <td>{{ velos.prix}}</td>
+                                    {% if velos.etat == 1                                    %}
+
+                                        <td> Disponible</td>
+                                    {% else %}
+                                        <td> Non Disponible</td>
+
+                                    {% endif %}
+                                    <td>
+                                        <a href="{{ path('afficher_velo', { 'id': velos.id }) }}" title="Afficher" data-toggle="tooltip"><i class="ti-eye"></i></a>
+                                        <a href="{{ path('delete_velo', { 'id': velos.id }) }}" title="Supprimer" data-toggle="tooltip" onclick="return confirm('Voulez vous supprimer cette vélo ?')" ><i class="ti-trash"></i></a>
+                                        <a href="{{ path('edit_velo', { 'id': velos.id }) }}" class="text-inverse p-r-10" data-toggle="tooltip" title="Editer"><i class="ti-marker-alt"></i></a>
+
+                                    </td>
+
+                                </tr>
+                            {% endfor %}
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Column -->
+    </div>
+
+
+{% endblock %}

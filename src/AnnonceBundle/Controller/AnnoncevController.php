@@ -80,7 +80,7 @@ class AnnoncevController extends Controller
 
     public function ajouterAction(Request $request)
     {
-        $user = $this->getDoctrine()->getRepository('AnnonceBundle:User')->findOneByUserId(1);
+        $user = $this->getUser() ;
         $deleg = $this->getDoctrine()->getRepository('AnnonceBundle:Delegation')->findByIdGouv(2);
         $annonce = new Annonces();
         $form = $this->createForm(AnnoncesType::class, $annonce);

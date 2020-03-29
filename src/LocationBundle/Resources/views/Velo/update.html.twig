@@ -1,0 +1,80 @@
+{% extends "@Annonce/Default/layout.html.twig" %}
+{% block content %}
+
+    <div class="row page-titles">
+        <div class="col-md-5 align-self-center">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">Locations</li>
+                <li class="breadcrumb-item active"><a href="{{ path('Location') }}">Velos</a></li>
+                <li class="breadcrumb-item active"><a href="{{ path('Ajouter_velo/') }}">Ajouter</a></li>
+            </ol>
+        </div>
+        <div class="col-md-7 align-self-center text-right">
+            <div class="d-flex justify-content-end align-items-center">
+
+                <a href="{{ path('Ajouter_velo/') }}"  type="button" class="btn btn-info "><i class="fa fa-plus-circle"></i> Ajouter</a>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Modifer Vélo</h4>
+                    <form method="post"  enctype="multipart/form-data">
+                        {{ form_start(form) }}
+
+                        <div class="form-group ">
+                            <label for="desc"  class="control-label">Matricule</label>
+                            <textarea placeholder="" class="form-control"  id="matricule" rows="4" name="matricule" minlength="4" maxlength="300" required >{{velo.matricule}}</textarea>
+                        </div>
+                        <div class="form-group ">
+                            <label for="num"  class="control-label">Constructeur</label>
+                            <input value="{{velo.constructeur}}" class="form-control"   type="number" id="constructeur" name="constructeur" min="10000000" max="99999999" required>
+                        </div>
+                        <div class="form-group ">
+                            <label for="num"  class="control-label">Etat :</label>
+
+                            <input  type="radio" id="etat" name="etat" value="1"
+                                    checked>
+                            <label for="huey">Disponible</label>
+                            <input type="radio" id="dewey" name="etat" value="0">
+                            <label for="dewey">Non Disponible</label>
+                        </div>
+                        <div class="form-group ">
+                            <label for="adr"  class="control-label">Model</label>
+                            <input value="{{velo.model}}" class="form-control" type="number" id="model" name="model"required>
+                        </div>
+                        <div class="form-group ">
+                            <label for="adr"  class="control-label">Prix</label>
+                            <input value="{{velo.prix}}" class="form-control" type="number" id="prix" name="prix"required>
+                        </div>
+                        <div class="form-group">
+                            <label for="delega"  class="control-label">Points de Location</label>
+                            <select  id="ptl" name="ptl"   class="form-control" required>
+                                {% for ptrel in ptrel %}
+                                    <option value= "{{ ptrel.getId() }}" selected>{{ ptrel.nom }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+
+
+                        <div class="form-group ">
+
+                            <label for="ph" class="control-label">Photo</label>
+                            <input type="file" id="ph" class="dropify" data-show-remove="false" name="image" accept="image/x-png,image/gif,image/jpeg" data-default-file="{{ asset('uploads/Annonces/')~velo.image }}"required/>
+
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i>Modifier</button>
+                            <a type="button" class="btn btn-secondary" href="{{ path('Location') }}">Annuler</a>
+                        </div>
+                        {{ form_end (form) }}
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

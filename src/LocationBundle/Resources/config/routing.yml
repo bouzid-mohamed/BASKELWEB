@@ -1,0 +1,41 @@
+Location:
+        path:     /Velo
+        defaults: { _controller: LocationBundle:Location:index }
+
+
+Ajouter_velo/:
+        path:     /Ajouter_Velo
+        defaults: { _controller: LocationBundle:Location:ajouter }
+
+PTRelais:
+        path:     /Points_Relais
+        defaults: { _controller: LocationBundle:PtRelais:index }
+delete_velo:
+                path:     /deleteVelo/{id}
+                defaults: { _controller: LocationBundle:Location:delete }
+
+edit_velo:
+        path:     /editVelo/{id}
+        defaults: { _controller: LocationBundle:Location:edit }
+afficher_velo:
+        path:     /AfficherVelo/{id}
+        defaults: { _controller: LocationBundle:Location:show }
+Ajouter_PTR/:
+        path:     /Ajouter_Points
+        defaults: { _controller: LocationBundle:PtRelais:ajouter }
+delete_PTR:
+        path:     /deletePoints/{id}
+        defaults: { _controller: LocationBundle:PtRelais:delete }
+edit_PTR:
+        path:     /editPTR/{id}
+        defaults: { _controller: LocationBundle:PtRelais:edit }
+Reservations:
+        path:     /Reservations
+        defaults: { _controller: LocationBundle:Reservation:index }
+
+delete_Reservation:
+        path:     /deleteReservation/{id}
+        defaults: { _controller: LocationBundle:Reservation:delete }
+Ajouter_Reservation/:
+        path:     /Ajouter_Reservation
+        defaults: { _controller: LocationBundle:Reservation:ajouter }

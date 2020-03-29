@@ -1,3 +1,8 @@
+Location:
+    resource: "@LocationBundle/Resources/config/routing.yml"
+    prefix:   /Location
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
 test:
     resource: "@TestBundle/Resources/config/routing.yml"
     prefix:   /Test

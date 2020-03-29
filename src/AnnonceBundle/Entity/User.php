@@ -3,6 +3,7 @@
 namespace AnnonceBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use FOS\UserBundle\Model\User as BaseUser;
 
 /**
  * User
@@ -10,20 +11,21 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="user")
  * @ORM\Entity
  */
-class User
+class User extends BaseUser
 {
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
 
     /**
-     * @ORM\OneToMany(targetEntity="Annonce\Entity\User", mappedBy="Annonces")
-     */
-    /**
-     * @var integer
+     * @var string
      *
-     * @ORM\Column(name="user_id", type="integer", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
+     * @ORM\Column(name="img_user", type="string", length=500, nullable=false)
      */
-    private $userId;
+    private $imgUser;
 
     /**
      * @var string
@@ -40,42 +42,11 @@ class User
     private $prenom;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="img_user", type="string", length=500, nullable=false)
-     */
-    private $imgUser;
-
-    /**
      * @return int
      */
     public function getUserId()
     {
         return $this->userId;
-    }
-
-    /**
-     * @return string
-     */
-    public function getNom()
-    {
-        return $this->nom;
-    }
-
-    /**
-     * @return string
-     */
-    public function getPrenom()
-    {
-        return $this->prenom;
-    }
-
-    /**
-     * @return string
-     */
-    public function getImgUser()
-    {
-        return $this->imgUser;
     }
 
     /**
@@ -87,11 +58,43 @@ class User
     }
 
     /**
+     * @return string
+     */
+    public function getImgUser()
+    {
+        return $this->imgUser;
+    }
+
+    /**
+     * @param string $imgUser
+     */
+    public function setImgUser($imgUser)
+    {
+        $this->imgUser = $imgUser;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNom()
+    {
+        return $this->nom;
+    }
+
+    /**
      * @param string $nom
      */
     public function setNom($nom)
     {
         $this->nom = $nom;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPrenom()
+    {
+        return $this->prenom;
     }
 
     /**
@@ -102,12 +105,6 @@ class User
         $this->prenom = $prenom;
     }
 
-    /**
-     * @param string $imgUser
-     */
-    public function setImgUser($imgUser)
-    {
-        $this->imgUser = $imgUser;
-    }
+
 }
 

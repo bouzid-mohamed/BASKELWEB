@@ -6,7 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('assets/images/favicon.png') }}">
-    <title>Annonces</title>
+    <title>BASKEL Admin</title>
     <link href="{{ asset('assets/node_modules/datatables/jquery.dataTables.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('dist/css/pages/file-upload.css') }}" rel="stylesheet">
     <link href="{{ asset('dist/css/pages/ecommerce.css') }}" rel="stylesheet">
@@ -78,23 +78,23 @@
                 <!-- ============================================================== -->
 
 
-                    <!-- ============================================================== -->
-                    <!-- Comment -->
-                    <!-- ============================================================== -->
+                <!-- ============================================================== -->
+                <!-- Comment -->
+                <!-- ============================================================== -->
 
-                    <!-- ============================================================== -->
-                    <!-- End Comment -->
-                    <!-- ============================================================== -->
-                    <!-- ============================================================== -->
-                    <!-- Messages -->
-                    <!-- ============================================================== -->
+                <!-- ============================================================== -->
+                <!-- End Comment -->
+                <!-- ============================================================== -->
+                <!-- ============================================================== -->
+                <!-- Messages -->
+                <!-- ============================================================== -->
 
-                    <!-- ============================================================== -->
-                    <!-- End Messages -->
-                    <!-- ============================================================== -->
-                    <!-- ============================================================== -->
-                    <!-- mega menu -->
-                    <!-- ============================================================== -->
+                <!-- ============================================================== -->
+                <!-- End Messages -->
+                <!-- ============================================================== -->
+                <!-- ============================================================== -->
+                <!-- mega menu -->
+                <!-- ============================================================== -->
 
                 <ul class="navbar-nav my-lg-10 ">
 
@@ -106,7 +106,7 @@
                     <!-- User Profile -->
                     <!-- ============================================================== -->
                     <li class="nav-item dropdown u-pro">
-                        <a class="nav-link dropdown-toggle waves-effect waves-dark profile-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src= "{{ asset('assets/images/users/1.jpg') }}" alt="user" class=""> <span class="hidden-md-down">Mark &nbsp;<i class="fa fa-angle-down"></i></span> </a>
+                        <a class="nav-link dropdown-toggle waves-effect waves-dark profile-pic" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src= "{{ asset('assets/images/users/1.jpg') }}" alt="user" class=""> <span class="hidden-md-down">{{ app.user.nom}}&nbsp;<i class="fa fa-angle-down"></i></span> </a>
                         <div class="dropdown-menu dropdown-menu-right animated flipInY">
                             <!-- text-->
                             <a href="javascript:void(0)" class="dropdown-item"><i class="ti-user"></i> My Profile</a>
@@ -120,9 +120,13 @@
                             <!-- text-->
                             <a href="javascript:void(0)" class="dropdown-item"><i class="ti-settings"></i> Account Setting</a>
                             <!-- text-->
+
+
+
+                            </a>
                             <div class="dropdown-divider"></div>
                             <!-- text-->
-                            <a href="login.html" class="dropdown-item"><i class="fa fa-power-off"></i> Logout</a>
+                            <a href="{{ path('fos_user_security_logout') }}"><i class="fa fa-power-off"></i> {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</a>
                             <!-- text-->
                         </div>
                     </li>
@@ -160,7 +164,13 @@
 
                         </ul>
                     </li>
-
+                    <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="ti-layout-grid2"></i><span class="hide-menu">Points de Location</span></a>
+                        <ul aria-expanded="false" class="collapse">
+                            <li><a href="{{ path('Location') }}">Vélos</a></li>
+                            <li><a href="{{ path('PTRelais') }}">Points de Relais  </a></li>
+                            <li><a href="{{ path('Reservations') }}">Réservations</a></li>
+                        </ul>
+                    </li>
 
                     <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="ti-layout-grid2"></i><span class="hide-menu">Modules</span></a>
                         <ul aria-expanded="false" class="collapse">
@@ -228,9 +238,9 @@
             <!-- End Right sidebar -->
             <!-- ============================================================== -->
         </div></div>
-        <!-- ============================================================== -->
-        <!-- End Container fluid  -->
-        <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- End Container fluid  -->
+    <!-- ============================================================== -->
 
     <!-- ============================================================== -->
     <!-- End Page wrapper  -->
@@ -243,7 +253,7 @@
     </footer>
     <!-- ============================================================== -->
     <!-- End footer -->
-<!-- ============================================================== -->
+    <!-- ============================================================== -->
 </div>
 <!-- ============================================================== -->
 <!-- End Wrapper -->

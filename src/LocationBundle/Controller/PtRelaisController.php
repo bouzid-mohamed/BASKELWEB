@@ -26,7 +26,7 @@ class PtRelaisController extends Controller
         $em->remove($ptl);
         $em->flush();
         $this->addFlash('success', 'Points Relais Supprimée');
-        return $this->redirect('/Location/Points_Relais');
+        return $this->redirect('/admin/Location/Points_Relais');
 
     }
 
@@ -57,7 +57,7 @@ class PtRelaisController extends Controller
             $em->persist($ptll);
             $this->addFlash('success', 'Points Relais ajoutée avec succés');
             $em->flush() ;
-            return $this->redirect('/Location/Points_Relais');
+            return $this->redirect('/admin/Location/Points_Relais');
         }
 
         return $this->render('@Location/PtRelais/add.html.twig', array('form' => $form->createView()));
@@ -81,7 +81,7 @@ class PtRelaisController extends Controller
 
             $entityManager->flush();
             $this->addFlash('success', 'Points de Relais Modifiée avec succés');
-            return $this->redirect('/Location/Points_Relais');
+            return $this->redirect('/admin/Location/Points_Relais');
         }
         return $this->render('@Location/PtRelais/update.html.twig', array('form' => $form->createView(),"velo"=>$ptrel));
 

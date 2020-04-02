@@ -1,6 +1,3 @@
-Location:
-    resource: "@LocationBundle/Resources/config/routing.yml"
-    prefix:   /Location
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
 test:
@@ -9,6 +6,6 @@ test:
 app:
     resource: '@AppBundle/Controller/'
     type: annotation
-Annonce:
-    resource: "@AnnonceBundle/Resources/config/routing.yml"
-    prefix:   /Annonce
+Admin:
+    resource: "@AnnonceBundle/Resources/config/admin.yml"
+    prefix:   /admin

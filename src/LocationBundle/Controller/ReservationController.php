@@ -2,6 +2,7 @@
 
 namespace LocationBundle\Controller;
 use AnnonceBundle\Entity\Annonces;
+use Knp\Bundle\SnappyBundle\Snappy\Response\PdfResponse;
 use LocationBundle\Entity\Velo;
 use LocationBundle\Entity\VeloPtRelais;
 
@@ -28,7 +29,7 @@ class ReservationController extends Controller
         $em->remove($velo);
         $em->flush();
         $this->addFlash('success', 'Réservation Supprimée');
-        return $this->redirect('/Location/Reservations');
+        return $this->redirect('/admin/Location/Reservations');
 
     }
 
@@ -62,16 +63,23 @@ class ReservationController extends Controller
             $res->setDateF(new \DateTime($request->get('datef')));
 
             $res->setPrixlocation($this->getDoctrine()->getRepository('LocationBundle:Velo')->find($request->get('vel'))->getPrix());
-            $a = $res->setDateLocation(new \DateTime($request->get('datel'))) ;
-            $b = $res->setDateLocation(new \DateTime($request->get('datef'))) ;
-            $r = $a-$b ;
 
             $em->persist($res);
             $this->addFlash('success', 'Reservation ajoutée avec succés ');
             $em->flush() ;
-            return $this->redirect('/Location/Reservations');
+            return $this->redirect('/admin/Location/Reservations');
         }
         return $this->render('@Location/Reservation/add.html.twig', array('form' => $form->createView(), 'velo' => $allvelo));
+    }
+    public function pdfAction($id)
+    {
+        $velo = $this->getDoctrine()->getRepository('LocationBundle:VeloPtRelais')->findOneById($id);;
+        $html = $this->renderView('@Location/Reservation/pdf.html.twig', array('velos'  => $velo));
+
+        return new PdfResponse(
+            $this->get('knp_snappy.pdf')->getOutputFromHtml($html),
+            'file.pdf'
+        );
     }
   /*
     public function editAction(Request $request,$id)

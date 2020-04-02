@@ -49,13 +49,13 @@
                                     <td>{{ velos.id}}</td>
                                     <td>{{ velos.idUser.nom}}</td>
                                     <td>{{ velos.idVelo.matricule}}</td>
-                                    <td>{{ velos.dateLocation|date('Y-m-d')  }}</td>
-                                    <td>{{ velos.dateF |date('Y-m-d')  }}</td>
+                                    <td>{{ velos.dateLocation|date('Y-m-d h:i:s')  }}</td>
+                                    <td>{{ velos.dateF |date('Y-m-d h:i:s')  }}</td>
                                     <td>{{ velos.prixlocation}}</td>
 
                                     <td>
-                                        <a href="{{ path('delete_Reservation', { 'id': velos.id }) }}" title="Supprimer" data-toggle="tooltip" onclick="return confirm('Voulez vous supprimer cette vélo ?')" ><i class="ti-trash"></i></a>
-
+                                        <a href="{{ path('delete_Reservation', { 'id': velos.id }) }}" title="Supprimer" data-toggle="tooltip" onclick="return confirm('Voulez vous supprimer cette résérvation ?')" ><i class="ti-trash"></i></a>
+                                        <a href="{{ path('pdf_res', { 'id': velos.id }) }}"  type="button" class="btn btn-info "><i class="fa fa-plus-circle"></i> Facture</a>
                                     </td>
 
                                 </tr>

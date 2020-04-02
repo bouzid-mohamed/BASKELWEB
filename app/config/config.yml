@@ -84,3 +84,8 @@ fos_user:
             from_email:
                 address:        registration@example.com
                 sender_name:    Demo Registration
+knp_snappy:
+    pdf:
+        enabled:    true
+        binary:    "\"C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltopdf.exe\"" #"\"C:\\Program Files\\wkhtmltopdf\\bin\\wkhtmltopdf.exe\"" for Windows users
+        options:    []

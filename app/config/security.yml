@@ -16,14 +16,21 @@ security:
             form_login:
                 provider: fos_userbundle
                 csrf_token_generator: security.csrf.token_manager
+            login:
+                # Toute page de connexion
+                pattern:  ^/(login)
+                anonymous: true
+                always_use_default_target_path: true
+                default_target_path: /espace-client
+                use_referer: true
 
-            logout:       true
+            logout:
+                target: /login
             anonymous:    true
 
     access_control:
         - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/admin/, role: ROLE_ADMIN }
-
+        - { path: ^/admin, role: ROLE_ADMIN }
 

@@ -22,6 +22,7 @@ class AppKernel extends Kernel
             new LocationBundle\LocationBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new AnnonceBundle\AnnonceBundle(),
+            new Knp\Bundle\SnappyBundle\KnpSnappyBundle(),
 
 
 

@@ -1,5 +1,6 @@
 <?php
-namespace  AnnonceBundle\Entity;
+
+namespace AnnonceBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -11,9 +12,6 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Annonces
 {
-    /**
-     * @ORM\ManyToOne(targetEntity="Annonce\Entity\User", inversedBy="Annonces")
-     */
     /**
      * @var integer
      *
@@ -386,11 +384,6 @@ class Annonces
     {
         $this->user = $user;
     }
-
-    /**
-     * @return string
-     */
-
 
 
 }

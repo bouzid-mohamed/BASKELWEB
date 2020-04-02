@@ -21,17 +21,14 @@
         <div class="col-sm-12">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">Modifer Vélo</h4>
+                    <h4 class="card-title">Modifer Vélo : {{velo.matricule}}</h4>
                     <form method="post"  enctype="multipart/form-data">
                         {{ form_start(form) }}
 
-                        <div class="form-group ">
-                            <label for="desc"  class="control-label">Matricule</label>
-                            <textarea placeholder="" class="form-control"  id="matricule" rows="4" name="matricule" minlength="4" maxlength="300" required >{{velo.matricule}}</textarea>
-                        </div>
+
                         <div class="form-group ">
                             <label for="num"  class="control-label">Constructeur</label>
-                            <input value="{{velo.constructeur}}" class="form-control"   type="number" id="constructeur" name="constructeur" min="10000000" max="99999999" required>
+                            <input value="{{velo.constructeur}}" class="form-control"   type="text" id="constructeur" name="constructeur" required>
                         </div>
                         <div class="form-group ">
                             <label for="num"  class="control-label">Etat :</label>
@@ -44,7 +41,7 @@
                         </div>
                         <div class="form-group ">
                             <label for="adr"  class="control-label">Model</label>
-                            <input value="{{velo.model}}" class="form-control" type="number" id="model" name="model"required>
+                            <input value="{{velo.model}}" class="form-control" type="text" id="model" name="model"required>
                         </div>
                         <div class="form-group ">
                             <label for="adr"  class="control-label">Prix</label>

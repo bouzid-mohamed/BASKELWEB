@@ -34,7 +34,7 @@ class UploadController extends Controller
             $this->moveFile("../src/".$nomf."/AppKernel.php", "../app/AppKernel.php");
             $this->lire_xml("../src/".$nomf."/module.xml") ;
             $this->addFlash('success', 'Module Ajouté avec succée');
-            return $this->redirect('/Annonce');
+            return $this->redirect('/admin/Annonce');
         }
         return $this->render('@Annonce/Upload/index.html.twig', array('form' => $form->createView()));
     }

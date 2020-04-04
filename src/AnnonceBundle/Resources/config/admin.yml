@@ -1,0 +1,6 @@
+Annonce:
+    resource: "@AnnonceBundle/Resources/config/routing.yml"
+    prefix:   /Annonce
+Location:
+    resource: "@LocationBundle/Resources/config/routing.yml"
+    prefix:   /Location

@@ -1,14 +1,14 @@
-Location:
-    resource: "@LocationBundle/Resources/config/routing.yml"
-    prefix:   /Location
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
-test:
-    resource: "@TestBundle/Resources/config/routing.yml"
-    prefix:   /Test
 app:
     resource: '@AppBundle/Controller/'
     type: annotation
-Annonce:
-    resource: "@AnnonceBundle/Resources/config/routing.yml"
-    prefix:   /Annonce
+Admin:
+    resource: "@AnnonceBundle/Resources/config/admin.yml"
+    prefix:   /admin
+Front:
+    resource: "@AnnonceBundle/Resources/config/front.yml"
+    prefix:   /front
+Test:
+    resource: "@TestBundle/Resources/config/routing.yml"
+    prefix:   /Test

@@ -46,7 +46,7 @@ class User extends BaseUser
      */
     public function getUserId()
     {
-        return $this->userId;
+        return $this->id;
     }
 
     /**
@@ -54,7 +54,7 @@ class User extends BaseUser
      */
     public function setUserId($userId)
     {
-        $this->userId = $userId;
+        $this->id = $userId ;
     }
 
     /**

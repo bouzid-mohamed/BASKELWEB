@@ -11,7 +11,7 @@ class FAnnoncelController extends Controller
 {
     public function indexAction()
     {
-        $user = $this->getDoctrine()->getRepository('AnnonceBundle:User')->findOneByUserId(1);
+        $user = $this->getUser() ;
         $userid = $user->getUserId() ;
         $repository = $this->getDoctrine()->getRepository(Annonces::class);
         $query1=  $repository->createQueryBuilder('p')->where('p.type= 3')->AndWhere('p.user = :usera')->setParameter('usera', $user);;
@@ -30,7 +30,7 @@ class FAnnoncelController extends Controller
     }
     public function showuserAction($id)
     {
-        $user = $this->getDoctrine()->getRepository('AnnonceBundle:User')->findOneByUserId(1);
+        $user = $this->getUser() ;
         $repository = $this->getDoctrine()->getRepository(Annonces::class);
         $query1=  $repository->createQueryBuilder('p')->where('p.type= 3')->AndWhere('p.user = :usera')->setParameter('usera', $user);;
         $annonces = $query1->getQuery()->getResult();
@@ -43,13 +43,13 @@ class FAnnoncelController extends Controller
         $em->remove($annonce);
         $em->flush();
         //$this->addFlash('success', 'Annonce vente Supprimée');
-        return $this->redirect('/Annonce/foruserl/'.$annonce->getUser()->getUserId() )   ;
+        return $this->redirect('/front/foruserl/'.$annonce->getUser()->getUserId() )   ;
 
 
     }
     public function editAction(Request $request,$id)
     {
-        $user = $this->getDoctrine()->getRepository('AnnonceBundle:User')->findOneByUserId(1);
+        $user = $this->getUser() ;
         $userid = $user->getUserId() ;
         $deleg = $this->getDoctrine()->getRepository('AnnonceBundle:Delegation')->findByIdGouv(2);
         $delega = $this->getDoctrine()->getRepository('AnnonceBundle:Delegation')->findByIdGouv(1);
@@ -80,7 +80,7 @@ class FAnnoncelController extends Controller
             $annonce->setPrixJour($request->get('prixjour'));
             $annonce->setPrixHeure($request->get('prixheure'));
             $entityManager->flush();
-            return $this->redirect('/Annonce/all_Location');
+            return $this->redirect('/front/all_Location');
             $this->addFlash('success', 'Annonce Location Modifiée avec succés');
 
         }
@@ -89,7 +89,7 @@ class FAnnoncelController extends Controller
     }
     public function ajouterAction(Request $request)
     {
-        $user = $this->getDoctrine()->getRepository('AnnonceBundle:User')->findOneByUserId(1);
+        $user = $this->getUser() ;
         $deleg = $this->getDoctrine()->getRepository('AnnonceBundle:Delegation')->findByIdGouv(2);
         $annonce = new Annonces();
         $form = $this->createForm(AnnoncesType::class, $annonce);
@@ -115,7 +115,7 @@ class FAnnoncelController extends Controller
             $em->persist($annonce);
             $this->addFlash('success', 'Annonce Locatin ajoutée avec succés');
             $em->flush() ;
-            return $this->redirect('/Annonce/all_Location');
+            return $this->redirect('/front/all_Location');
         }
 
         return $this->render('@Annonce/Fannoncesl/add.html.twig', array('form' => $form->createView(), 'delegs' => $deleg));

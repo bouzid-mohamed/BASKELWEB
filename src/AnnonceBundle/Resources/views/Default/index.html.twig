@@ -38,7 +38,7 @@
                         <table class="table product-overview" id="myTable">
                             <thead>
                             <tr>
-                                <th>Nom</th>
+
                                 <th>Photo</th>
                                 <th>Gouvernerat</th>
                                 <th>Delegation</th>
@@ -51,7 +51,7 @@
                             <tbody>
                             {% for annonce in annonces %}
                                 <tr>
-                                    <td>{{ annonce.user.nom }}</td>
+                                  
                                     <td><img src="{{ asset('uploads/Annonces/')~annonce.photo }}" alt="iMac" width="80">
                                     </td>
                                     <td>{{ annonce.gouvernorat }}</td>

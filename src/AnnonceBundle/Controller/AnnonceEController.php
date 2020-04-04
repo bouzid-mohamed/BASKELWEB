@@ -56,7 +56,7 @@ class AnnonceEController extends Controller
 
             $entityManager->flush();
             $this->addFlash('success', 'Annonce Echange Modifiée avec succés');
-            return $this->redirect('/Annonce/Echange');
+            return $this->redirect('/admin/Annonce/Echange');
         }
         return $this->render('@Annonce/Echange/update.html.twig', array('form' => $form->createView(), 'delegs' => $deleg,"annonce"=>$annonce,'delegas'=>$delega));
 
@@ -69,7 +69,7 @@ class AnnonceEController extends Controller
         $em->remove($annonce);
         $em->flush();
         $this->addFlash('success', 'Annonce échange Supprimée');
-        return $this->redirect('/Annonce/Echange');
+        return $this->redirect('/admin/Annonce/Echange');
 
     }
 
@@ -100,7 +100,7 @@ class AnnonceEController extends Controller
             $em->persist($annonce);
             $this->addFlash('success', 'Annonce échange ajoutée avec succés');
             $em->flush() ;
-            return $this->redirect('/Annonce/Echange');
+            return $this->redirect('/admin/Annonce/Echange');
         }
 
         return $this->render('@Annonce/Echange/add.html.twig', array('form' => $form->createView(), 'delegs' => $deleg));

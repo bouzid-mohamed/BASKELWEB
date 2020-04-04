@@ -12,7 +12,7 @@ class FAnnonceEController extends Controller
 {
     public function indexAction()
     {
-        $user = $this->getDoctrine()->getRepository('AnnonceBundle:User')->findOneByUserId(1);
+        $user = $this->getUser() ;
         $userid = $user->getUserId() ;
         $repository = $this->getDoctrine()->getRepository(Annonces::class);
         $query1=  $repository->createQueryBuilder('p')->where('p.type= 1')->AndWhere('p.user = :usera')->setParameter('usera', $user);;
@@ -24,7 +24,7 @@ class FAnnonceEController extends Controller
     }
     public function showuserAction($id)
     {
-        $user = $this->getDoctrine()->getRepository('AnnonceBundle:User')->findOneByUserId(1);
+        $user = $this->getUser() ;
         $repository = $this->getDoctrine()->getRepository(Annonces::class);
         $query1=  $repository->createQueryBuilder('p')->where('p.type= 1')->AndWhere('p.user = :usera')->setParameter('usera', $user);
         $annonces = $query1->getQuery()->getResult();
@@ -40,7 +40,7 @@ class FAnnonceEController extends Controller
 
     public function editAction(Request $request,$id)
     {
-        $user = $this->getDoctrine()->getRepository('AnnonceBundle:User')->findOneByUserId(1);
+        $user = $this->getUser() ;
         $userid = $user->getUserId() ;
         $deleg = $this->getDoctrine()->getRepository('AnnonceBundle:Delegation')->findByIdGouv(2);
         $delega = $this->getDoctrine()->getRepository('AnnonceBundle:Delegation')->findByIdGouv(1);
@@ -69,7 +69,7 @@ class FAnnonceEController extends Controller
                 $annonce->setPhoto($new_name);
             }else  $annonce->setPhoto($annonce->getPhoto());
             $entityManager->flush();
-            return $this->redirect('/Annonce/all_Echange');
+            return $this->redirect('/front/all_Echange');
             $this->addFlash('success', 'Annonce vente Modifiée avec succés');
 
         }
@@ -83,11 +83,11 @@ class FAnnonceEController extends Controller
         $em->remove($annonce);
         $em->flush();
         //$this->addFlash('success', 'Annonce Echange Supprimée');
-        return $this->redirect('/Annonce/foruserE/'.$annonce->getUser()->getUserId() )   ;
+        return $this->redirect('/front/foruserE/'.$annonce->getUser()->getUserId() )   ;
     }
     public function ajouterAction(Request $request)
     {
-        $user = $this->getDoctrine()->getRepository('AnnonceBundle:User')->findOneByUserId(1);
+         $user = $this->getUser() ;
         $deleg = $this->getDoctrine()->getRepository('AnnonceBundle:Delegation')->findByIdGouv(2);
         $annonce = new Annonces();
         $form = $this->createForm(AnnoncesType::class, $annonce);
@@ -111,7 +111,7 @@ class FAnnonceEController extends Controller
             $em->persist($annonce);
             $this->addFlash('success', 'Annonce vente ajoutée avec succés');
             $em->flush() ;
-            return $this->redirect('/Annonce/all_Echange');
+            return $this->redirect('/front/all_Echange');
         }
         return $this->render('@Annonce/Fannoncese/add.html.twig', array('form' => $form->createView(), 'delegs' => $deleg));
     }

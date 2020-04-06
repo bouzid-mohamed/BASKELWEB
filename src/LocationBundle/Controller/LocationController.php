@@ -1,6 +1,7 @@
 <?php
 
 namespace LocationBundle\Controller;
+use Knp\Bundle\SnappyBundle\Snappy\Response\PdfResponse;
 use AnnonceBundle\Entity\Annonces;
 use LocationBundle\Entity\Velo;
 use LocationBundle\Form\VelosType;
@@ -24,7 +25,7 @@ class LocationController extends Controller
         $em->remove($velo);
         $em->flush();
         $this->addFlash('success', 'Vélo Supprimée');
-        return $this->redirect('/Location/Velo');
+        return $this->redirect('/admin/Location/Velo');
 
     }
 
@@ -62,7 +63,7 @@ class LocationController extends Controller
             $em->persist($velo);
             $this->addFlash('success', 'Vélo ajoutée avec succés');
             $em->flush() ;
-            return $this->redirect('/Location/Velo');
+            return $this->redirect('/admin/Location/Velo');
         }
 
         return $this->render('@Location/Velo/add.html.twig', array('form' => $form->createView(), 'ptrel' => $vel));
@@ -96,9 +97,10 @@ class LocationController extends Controller
 
             $entityManager->flush();
             $this->addFlash('success', 'Vélo Modifiée avec succés');
-            return $this->redirect('/Location/Velo');
+            return $this->redirect('/admin/Location/Velo');
         }
         return $this->render('@Location/Velo/update.html.twig', array('form' => $form->createView(),"velo"=>$velo , 'ptrel' => $ptrel));
 
     }
+
 }

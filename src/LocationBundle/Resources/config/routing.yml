@@ -39,3 +39,6 @@ delete_Reservation:
 Ajouter_Reservation/:
         path:     /Ajouter_Reservation
         defaults: { _controller: LocationBundle:Reservation:ajouter }
+pdf_res:
+        path:     /Afficherpdf/{id}
+        defaults: { _controller: LocationBundle:Reservation:pdf }

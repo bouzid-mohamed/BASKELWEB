@@ -54,7 +54,7 @@ class AnnonceLController extends Controller
             $annonce->setPrixHeure($request->get('prixheure'));
             $entityManager->flush();
             $this->addFlash('success', 'Annonce location Modifiée avec succés');
-            return $this->redirect('/Annonce/Location');
+            return $this->redirect('/admin/Annonce/Location');
         }
         return $this->render('@Annonce/Location/update.html.twig', array('form' => $form->createView(), 'delegs' => $deleg,"annonce"=>$annonce,'delegas'=>$delega));
     }
@@ -65,7 +65,7 @@ class AnnonceLController extends Controller
         $em->remove($annonce);
         $em->flush();
         $this->addFlash('success', 'Annonce Location Supprimée');
-        return $this->redirect('/Annonce/Location');
+        return $this->redirect('/admin/Annonce/Location');
 
     }
 
@@ -97,7 +97,7 @@ class AnnonceLController extends Controller
             $em->persist($annonce);
             $this->addFlash('success', 'Annonce Location ajoutée avec succés');
             $em->flush() ;
-            return $this->redirect('/Annonce/Location');
+            return $this->redirect('/admin/Annonce/Location');
         }
 
         return $this->render('@Annonce/Location/add.html.twig', array('form' => $form->createView(), 'delegs' => $deleg));

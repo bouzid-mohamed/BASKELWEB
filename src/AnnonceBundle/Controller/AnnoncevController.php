@@ -59,7 +59,7 @@ class AnnoncevController extends Controller
             }else  $annonce->setPhoto($annonce->getPhoto());
             $annonce->setPrix($request->get('prix'));
             $entityManager->flush();
-            return $this->redirect('/Annonce');
+            return $this->redirect('/admin/Annonce');
             $this->addFlash('success', 'Annonce vente Modifiée avec succés');
 
         }
@@ -74,7 +74,7 @@ class AnnoncevController extends Controller
         $em->remove($annonce);
         $em->flush();
         $this->addFlash('success', 'Annonce vente Supprimée');
-        return $this->redirect('/Annonce');
+        return $this->redirect('/admin/Annonce');
 
     }
 
@@ -105,7 +105,7 @@ class AnnoncevController extends Controller
             $em->persist($annonce);
             $this->addFlash('success', 'Annonce vente ajoutée avec succés');
             $em->flush() ;
-            return $this->redirect('/Annonce');
+            return $this->redirect('/admin/Annonce');
         }
 
         return $this->render('@Annonce/Default/add.html.twig', array('form' => $form->createView(), 'delegs' => $deleg));

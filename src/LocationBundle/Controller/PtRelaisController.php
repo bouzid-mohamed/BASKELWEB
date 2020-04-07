@@ -30,14 +30,16 @@ class PtRelaisController extends Controller
 
     }
 
-   /* public function showAction($id)
+    public function showAction($id)
     {
-        $ptl = $this->getDoctrine()->getRepository('LocationBundle:PointRelais')->findOneById($id);;
-        return $this->render('@Location/PtRelais/show.html.twig', array('ptl' => $ptl));
+        $ptrell = $this->getDoctrine()->getRepository('LocationBundle:PointRelais')->findAll();
+        $ptrel = $this->getDoctrine()->getRepository('LocationBundle:PointRelais')->findOneById($id);
+        $velo = $this->getDoctrine()->getRepository('LocationBundle:Velo')->findAll();
+        return $this->render('@Location/PtRelais/show.html.twig', array('ptrel' => $ptrel,'velo'=>$velo,'ptrell'=>$ptrell));
     }
-   */
     public function ajouterAction(Request $request)
     {
+        $vel = $this->getDoctrine()->getRepository('LocationBundle:PointRelais')->findAll();
 
         $ptll = new PointRelais();
         $form = $this->createForm(PtrType::class,$ptll) ;
@@ -49,7 +51,7 @@ class PtRelaisController extends Controller
             $ptll->setNom($request->get('nom'));
             $long = $request->get('longitude');
             $lat = $request->get('latitude');
-            $coord=$lat.",".$long ;
+            $coord=$long.",".$lat ;
             $ptll->setCoordonnees($coord);
 
 
@@ -60,11 +62,12 @@ class PtRelaisController extends Controller
             return $this->redirect('/admin/Location/Points_Relais');
         }
 
-        return $this->render('@Location/PtRelais/add.html.twig', array('form' => $form->createView()));
+        return $this->render('@Location/PtRelais/add.html.twig', array('form' => $form->createView(),'ptrel'=>$vel));
     }
 
     public function editAction(Request $request,$id)
     {
+        $vel = $this->getDoctrine()->getRepository('LocationBundle:PointRelais')->findAll();
 
         $entityManager = $this->getDoctrine()->getManager();
         $ptrel = $entityManager->getRepository('LocationBundle:PointRelais')->findOneById($id);
@@ -76,14 +79,14 @@ class PtRelaisController extends Controller
             $ptrel->setNom($request->get('nom'));
             $long = $request->get('longitude');
             $lat = $request->get('latitude');
-            $coord=$lat.",".$long ;
+            $coord=$long.",".$lat ;
             $ptrel->setCoordonnees($coord);
 
             $entityManager->flush();
             $this->addFlash('success', 'Points de Relais Modifiée avec succés');
             return $this->redirect('/admin/Location/Points_Relais');
         }
-        return $this->render('@Location/PtRelais/update.html.twig', array('form' => $form->createView(),"velo"=>$ptrel));
+        return $this->render('@Location/PtRelais/update.html.twig', array('form' => $form->createView(),"velo"=>$ptrel,'ptrel'=>$vel));
 
     }
 

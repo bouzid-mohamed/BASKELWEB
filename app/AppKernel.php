@@ -17,12 +17,13 @@ class AppKernel extends Kernel
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
  //           new Symfony\Bundle\AsseticBundle\AsseticBundle(),
-            new TestBundle\TestBundle(),
+            new MapBundle\MapBundle(),
             new AppBundle\AppBundle(),
             new LocationBundle\LocationBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new AnnonceBundle\AnnonceBundle(),
             new Knp\Bundle\SnappyBundle\KnpSnappyBundle(),
+            new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
 
 
 

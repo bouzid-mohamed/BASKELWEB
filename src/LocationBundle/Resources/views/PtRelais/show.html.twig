@@ -20,50 +20,9 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-body">
-                    <h3 class="">Velo à louer</h3>
-                    <h2 class="m-t-40">Prix :  {{velo.prix}}<small class="text-success"> DT  / H </small></h2>
+                    <h3 class="">Point de Location : <small class="text-success"> {{ptrel.nom}}</small></h3>
                     <div class="row">
-                        <div class="col-lg-3 col-md-3 col-sm-6">
-                            <div class="white-box text-center"> <img src="{{ asset('uploads/Annonces/')~velo.image }}" class="img-responsive"> </div>
-                        </div>
-                        <div class="col-lg-9 col-md-9 col-sm-6">
-                            <h4 class="box-title m-t-40">Matricule :</h4>
-                            <p>{{ velo.matricule}}</p>
-                            {% if velo.etat == 1                                    %}
-
-                                <p> Disponible à {{  velo.pointrelais.nom}}</p>
-                            {% else %}
-                                <p> Non Disponible</p>
-
-                            {% endif %}
-
-                        </div>
-                        <div class="col-lg-12 col-md-12 col-sm-12">
-                            <h3 class="box-title m-t-40">Informations Générales</h3>
-                            <div class="table-responsive">
-                                <table class="table">
-                                    <tbody>
-                                    <tr>
-                                        <td width="390">Velo Id</td>
-                                        <td>{{ velo.id  }} </td>
-                                    </tr>
-                                    <tr>
-                                        <td width="390">Modele</td>
-                                        <td>{{ velo.model }} </td>
-                                    </tr>
-                                    <tr>
-                                        <td> Constructeur</td>
-                                        <td> {{ velo.constructeur }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Prix par Heure</td>
-                                        <td>{{velo.prix}} </td>
-                                    </tr>
-
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
+                        {{ include('@Map/Default/show.html.twig') }}
                     </div>
                 </div>
             </div>

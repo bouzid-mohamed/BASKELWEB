@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Map</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+</head>
+<body>
+<style>
+    /* Optional: Makes the sample page fill the window. */
+    html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+    }
+    /* Always set the map height explicitly to define the size of the div
+    * element that contains the map. */
+    #map {
+        height: 100%;
+    }
+</style>
+<style>
+
+    input[type=text], select {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    input[type=submit] {
+        width: 100%;
+        background-color: #4CAF50;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    input[type=submit]:hover {
+        background-color: #45a049;
+    }
+
+    .container {
+        border-radius: 5px;
+        background-color: #f2f2f2;
+        padding: 20px;
+        margin-left: 20%;
+        width:50%
+    }
+    .marker {
+        background-size: cover;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+    #map {height:750px ;width:1550px; }
+
+</style>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+
+<div id="map"></div>
+
+<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.48.0/mapbox-gl.js'></script>
+<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.48.0/mapbox-gl.css' rel='stylesheet' />
+<style>
+</style>
+
+<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.3.0/mapbox-gl-geocoder.min.js'></script>
+<link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v2.3.0/mapbox-gl-geocoder.css' type='text/css' />
+
+<script>
+
+    var user_location = [9.423340156576245,35.415673003870296];
+    mapboxgl.accessToken = 'pk.eyJ1IjoiZmFraHJhd3kiLCJhIjoiY2pscWs4OTNrMmd5ZTNra21iZmRvdTFkOCJ9.15TZ2NtGk_AtUvLd27-8xA';
+    var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/streets-v9',
+        center: user_location,
+        zoom: 6
+    });
+    //  geocoder here
+    var geocoder = new MapboxGeocoder({
+        accessToken: mapboxgl.accessToken,
+        // limit results to Australia
+        //country: 'IN',
+    });
+
+
+    // After the map style has loaded on the page, add a source layer and default
+    // styling for a single point.
+    map.on('load', function() {
+        {% for ptrel in ptrel %}
+        new mapboxgl.Marker()
+            .setLngLat([{{ ptrel.coordonnees }}]).setPopup( new mapboxgl.Popup()
+            .setLngLat([{{ ptrel.coordonnees }}])
+            .setHTML('<h3>{{ ptrel.nom }}</h3> </br> <center><a href="{{ path('Afficher_Res', { 'id': ptrel.id }) }}"  data-toggle="tooltip" title="Afficher"><i class="ti-eye"></i></a><a href="{{ path('delete_PTR', { 'id': ptrel.id }) }}"  data-toggle="tooltip" title="Delete"><i class="ti-trash"></i></a><a href="{{ path('edit_PTR', { 'id': ptrel.id }) }}"  data-toggle="tooltip" title="Edit"><i class="ti-marker-alt"></i></a></center>'))
+            .addTo(map);
+
+        {% endfor %}
+
+        geocoder.on('result', function(ev) {
+            alert("aaaaa");
+            console.log(ev.result.center);
+
+        });
+    });
+
+
+
+
+
+
+    document.getElementById('geocoder').appendChild(geocoder.onAdd(map));
+
+</script>

@@ -42,3 +42,6 @@ Ajouter_Reservation/:
 pdf_res:
         path:     /Afficherpdf/{id}
         defaults: { _controller: LocationBundle:Reservation:pdf }
+Afficher_Res:
+        path:     /AfficherPoints/{id}
+        defaults: { _controller: LocationBundle:PtRelais:show }

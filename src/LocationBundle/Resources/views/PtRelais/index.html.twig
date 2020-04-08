@@ -32,31 +32,8 @@
             <div class="card">
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table product-overview" id="myTable">
-                            <thead>
-                            <tr>
-                                <th>Nom</th>
-                                <th>Coordonnées</th>
+                        {{ include('@Map/Default/global.html.twig') }}
 
-                            </tr>
-                            </thead>
-                            <tbody>
-                            {% for velos in ptrel %}
-                                <tr>
-
-                                    <td>{{ velos.nom}}</td>
-                                    <td>{{ velos.coordonnees}}</td>
-                                    <td>
-                                        <a href="{{ path('delete_PTR', { 'id': velos.id }) }}" title="Supprimer" data-toggle="tooltip" onclick="return confirm('Voulez vous supprimer cette points de Relais ?')" ><i class="ti-trash"></i></a>
-                                        <a href="{{ path('edit_PTR', { 'id': velos.id }) }}" class="text-inverse p-r-10" data-toggle="tooltip" title="Editer"><i class="ti-marker-alt"></i></a>
-
-                                    </td>
-
-                                </tr>
-                            {% endfor %}
-
-                            </tbody>
-                        </table>
                     </div>
                 </div>
             </div>

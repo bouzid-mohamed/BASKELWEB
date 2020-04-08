@@ -26,7 +26,7 @@ class FAnnonceVController extends Controller
             $request->query->get('page', 1), /*page number*/
             12/*page number*/
         ) ;
-        dump(get_class($annoncesv)) ;
+
 
         return $this->render('@Annonce/Fannoncesv/index.html.twig', array('annoncesv' => $annoncesv,'annoncesuser'=>$annoncesuser,'nbr'=>$nbr,'user'=>$userid));
     }

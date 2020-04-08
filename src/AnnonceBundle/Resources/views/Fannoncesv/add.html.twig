@@ -1,4 +1,4 @@
-{% extends "@Annonce/FAnnonces/layout.html.twig" %}
+{% extends "@Annonce/FAnnonces/formlayout.html.twig" %}
 {% block content %}
 
     <script>
@@ -94,7 +94,6 @@
     <!--===============================================================================================-->
     <link rel="icon" type="image/png" href="{{ asset('form/images/icons/favicon.ico') }}"/>
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('form/vendor/bootstrap/css/bootstrap.min.css') }}">
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href= "{{ asset('form/fonts/font-awesome-4.7.0/css/font-awesome.min.css') }}">
     <!--===============================================================================================-->
@@ -115,11 +114,11 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('form/css/util.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('form/css/main.css') }}">
 
- <div class="container-contact100"   >
+    <div class="container-contact100"  style="background-color: #9fcdff" >
         <div class="wrap-contact100">
             <form class="contact100-form validate-form" method="post"  enctype="multipart/form-data">
                 {{ form_start(form) }}
-				<span class="contact100-form-title">
+                <span class="contact100-form-title">
 					Ajouter Votre Annonce
 				</span>
 
@@ -183,7 +182,7 @@
                 </div>
                 <div class="container-contact100-form-btn">
                     <a  href = "{{ path('Annonces_allVente') }}" class="contact100-form-btn"  style="color: white">Annuler</a>
-						<span>
+                    <span>
 
 
 						</span>

@@ -1,35 +1,39 @@
 {% extends "@Annonce/FAnnonces/layout.html.twig" %}
+{% block contentt %}
+    <h5>Mes Annonces <span>Location</span></h5>
+{% endblock %}
 {% block content %}
+    {% for annonce in annonces %}
 
-    <div class="bikes">
+        <div class="col-md-3 product-men">
+            <div class="men-pro-item simpleCart_shelfItem">
+                <div class="men-thumb-item">
+                    <img src="{{ asset('uploads/Annonces/')~annonce.photo }}" height="200px" width="150 px" alt="" class="pro-image-front">
+                    <img src="{{ asset('uploads/Annonces/')~annonce.photo }}" alt=""  height="200px" width="150px" class="pro-image-back">
+                    <div class="men-cart-pro">
+                        <div class="inner-men-cart-pro">
+                            <a  href="{{ path('update_annonceLoc/', { 'id': annonce.annId }) }}"  class="link-product-add-cart">Editer</a>
+                        </div>
+                    </div>
+                    <a  href="{{ path('delete_annonceLoc/', { 'id': annonce.annId }) }}" style="background-color: red;"onclick="return confirm('Voulez vous supprimer cette annonce ?')"> <span class="product-new-top"> Supprimer</span> </a>
+                </div>
+                <div class="item-info-product ">
+                    <h4><a >  Vélo à louer</a></h4>
+                    <div class="info-product-price">
+                        <span class="item_price">{{ annonce.prixheure }} Dt /</span>
+                        {{ annonce.prixjour}} Dt
+                    </div>
+                    <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out button2">
 
+                        <a  href="{{ path('show_annoncel/', { 'id': annonce.annId }) }}"><input type="submit" name="submit" value="Consulter" class="button" style="color: white ;" /></a>
 
-        <div class="singlespeed-sec">
-            <div class="product-head">
-                <a href = "{{ path('Annonces_allLocation') }}">    Back</a> <span></span>
+                    </div>
+
+                </div>
             </div>
-            <h2>Mes Annonces Location </h2>
 
-
-            {% for annonce in annonces %}
-                <a href="single.html"><div class="bike">
-                        <img src="{{ asset('uploads/Annonces/')~annonce.photo }}" height="150px" width="90px" alt=""/>
-                        <div class="bike-cost">
-                            <div class="bike-mdl">
-                                <h4>{{ annonce.prixjour }}/{{ annonce.prixheure }} Dt<span>{{ annonce.date|date("m/d/Y")}}</span></h4>
-                            </div>
-                            <div class="bike-cart">
-                                <a class="buy"href="{{ path('show_annoncel/', { 'id': annonce.annId }) }}">Consulter</a>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
-                        <div class="fast-viw">
-                            <a href="{{ path('update_annonceLoc/', { 'id': annonce.annId }) }}" style="background-color: #00b286;" >Edit</a>
-                            <a href="{{ path('delete_annonceLoc/', { 'id': annonce.annId }) }}" style="background-color: red;"onclick="return confirm('Voulez vous supprimer cette annonce ?')">Delete</a>
-                        </div>
-                    </div></a>
-            {% endfor %}
-            <div class="clearfix"></div>
         </div>
-    </div>
+    {% endfor %}
+
+
 {% endblock %}

@@ -9,7 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 class FAnnoncelController extends Controller
 {
-    public function indexAction()
+    public function indexAction(Request $request)
     {
         $user = $this->getUser() ;
         $userid = $user->getUserId() ;
@@ -17,8 +17,13 @@ class FAnnoncelController extends Controller
         $query1=  $repository->createQueryBuilder('p')->where('p.type= 3')->AndWhere('p.user = :usera')->setParameter('usera', $user);;
         $annoncesuser = $query1->getQuery()->getResult();
         $nbr=  count($annoncesuser) ;
-        $annoncesv =  $this->getDoctrine()->getRepository('AnnonceBundle:Annonces')->findBy(['type' => 3],
+        $annonces =  $this->getDoctrine()->getRepository('AnnonceBundle:Annonces')->findBy(['type' => 3],
             ['date' => 'DESC']) ;
+        $paginator =$this->get('knp_paginator') ;
+        $annoncesv = $paginator->paginate($annonces, /* query NOT result */
+            $request->query->get('page', 1), /*page number*/
+            12/*page number*/
+        ) ;
         return $this->render('@Annonce/Fannoncesl/index.html.twig', array('annoncesv' => $annoncesv,'annoncesuser'=>$annoncesuser,'nbr'=>$nbr,'user'=>$userid));
     }
     public function showAction($id)

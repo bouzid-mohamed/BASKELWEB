@@ -11,12 +11,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         function hideURLbar(){ window.scrollTo(0,1); } </script>
     <!--//tags -->
     <link href="{{ asset('layouts/css/bootstrap.css') }}" rel="stylesheet" type="text/css" media="all" />
+    <link rel="stylesheet" href="{{ asset('layouts/css/flexslider.css') }}" type="text/css" media="screen" />
+
     <link rel="stylesheet" type="text/css" href="{{ asset('layouts/css/jquery-ui.css') }}">
     <link href="{{ asset('layouts/css/style.css') }}" rel="stylesheet" type="text/css" media="all" />
     <link href="{{ asset('layouts/css/font-awesome.css') }}" rel="stylesheet">
     <!-- //for bootstrap working -->
     <link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800" rel="stylesheet">
     <link href='//fonts.googleapis.com/css?family=Lato:400,100,100italic,300,300italic,400italic,700,900,900italic,700italic' rel='stylesheet' type='text/css'>
+    <script type="text/javascript" src="{{ asset('layouts/js/jquery-2.1.4.min.js') }}"></script>
+
 </head>
 <body>
 <!-- header -->
@@ -43,7 +47,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         </div>
         <!-- header-bot -->
         <div class="col-md-4 logo_agile">
-            <h1><a href="index.html"><span>E</span>lite Shoppy <i class="fa fa-shopping-bag top_logo_agile_bag" aria-hidden="true"></i></a></h1>
+            <h1><a href="index.html"><span>B</span>askel<i class="fa fa-shopping-bag top_logo_agile_bag" aria-hidden="true"></i></a></h1>
         </div>
         <!-- header-bot -->
         <div class="col-md-4 agileits-social top_content">
@@ -327,9 +331,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <li><input type="checkbox" checked="checked" id="item-0" /><label for="item-0"><i class="fa fa-long-arrow-right" aria-hidden="true"></i> Annonces Vente</label>
                         <ul>
                             <ul>
-                                <li><a href="mens.html">Tous les annonces </a></li>
-                                <li><a href="mens.html">Mes Annonces</a></li>
-                                <li><a href="mens.html">Ajouter une Annonce</a></li>
+                                <li><a href = "{{ path('Annonces_allVente') }}">Tous les annonces </a></li>
+                                <li><a href="{{ path('Ann_user/', { 'id':  app.user.id }) }}">Mes Annonces</a></li>
+                                <li><a href="{{ path('FAddVente') }}">Ajouter une Annonce</a></li>
 
                             </ul>
                             </li>
@@ -340,9 +344,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <li><input type="checkbox" id="item-1" checked="checked" /><label for="item-1"><i class="fa fa-long-arrow-right" aria-hidden="true"></i> Annonces Location</label>
                         <ul>
                             <ul>
-                                <li><a href="mens.html">Tous les annonces </a></li>
-                                <li><a href="mens.html">Mes Annonces</a></li>
-                                <li><a href="mens.html">Ajouter une Annonce</a></li>
+                                <li><a href="{{ path('Annonces_allLocation') }}">Tous les annonces </a></li>
+                                <li><a href="{{ path('Ann_userl/', { 'id':  app.user.id }) }}">Mes Annonces</a></li>
+                                <li><a href="{{ path('Annonces_allVente') }}">Ajouter une Annonce</a></li>
 
                             </ul>
                             </li>
@@ -370,7 +374,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <div class="col-md-8 products-right" >
 
             <div class="sort-grid">
-                <h5>Annonces <span>Vente</span></h5>
+                  {% block contentt %}
+                {% endblock %}
             </div>
             <div class="men-wear-top">
 
@@ -625,7 +630,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- //login -->
 <a href="#home" class="scroll" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
 <!-- js -->
-<script type="text/javascript" src="{{ asset('layouts/js/jquery-2.1.4.min.js') }}"></script>
 <!-- //js -->
 <script src="{{ asset('layouts/js/responsiveslides.min.js') }}"></script>
 <script>

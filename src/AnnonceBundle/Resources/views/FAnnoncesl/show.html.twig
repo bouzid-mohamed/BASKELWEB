@@ -125,14 +125,18 @@
 
                             </div>
                             <div class="item-info-product ">
-                                <h4><a >  Vélo à Louer</a></h4>
+                                <h4><a> Vélo à Louer</a></h4>
                                 <div class="info-product-price">
                                     <span class="item_price">   {{ annonce.prixheure }} Dt  /</span>
                                     {{ annonce.prixjour }} Dt
                                 </div>
                                 <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out button2">
 
-                                    <a  href="{{ path('show_annoncev/', { 'id': annonce.annId }) }}"><input type="submit" name="submit" value="Consulter" class="button" style="color: white ;" /></a>
+                                    <a href="{{ path('show_annoncel/', { 'id': annonce.annId }) }}"><input type="submit"
+                                                                                                           name="submit"
+                                                                                                           value="Consulter"
+                                                                                                           class="button"
+                                                                                                           style="color: white ;"/></a>
 
                                 </div>
 
@@ -144,11 +148,6 @@
                     {% set i=i+1 %}
                 {% endif %}
             {% endfor %}
-
-
-
-
-
             <div class="clearfix"> </div>
             <!--//slider_owl-->
         </div>

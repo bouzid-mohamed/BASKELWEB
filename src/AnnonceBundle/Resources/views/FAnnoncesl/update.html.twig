@@ -1,5 +1,6 @@
-{% extends "@Annonce/FAnnonces/layout.html.twig" %}
+{% extends "@Annonce/FAnnonces/formlayout.html.twig" %}
 {% block content %}
+
     <script>
         function myfunction() {
             var e = document.getElementById("gouva");
@@ -82,7 +83,6 @@
 
             }
         }
-
         function fun() {
 
         }
@@ -94,7 +94,6 @@
     <!--===============================================================================================-->
     <link rel="icon" type="image/png" href="{{ asset('form/images/icons/favicon.ico') }}"/>
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('form/vendor/bootstrap/css/bootstrap.min.css') }}">
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="{{ asset('form/fonts/font-awesome-4.7.0/css/font-awesome.min.css') }}">
     <!--===============================================================================================-->
@@ -116,7 +115,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('form/css/util.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('form/css/main.css') }}">
 
-    <div class="container-contact100" style="background-image: url('../front/images/a.jpg'); ">
+    <div class="container-contact100" style="background-color: #9fcdff">
         <div class="wrap-contact100">
             <form class="contact100-form validate-form" method="post" enctype="multipart/form-data">
                 {{ form_start(form) }}
@@ -235,7 +234,9 @@
                 {{ form_end (form) }}
             </form>
         </div>
+
     </div>
+
     <script src="{{ asset('assets/node_modules/dropify/dist/js/dropify.min.js') }}"></script>
     <!--===============================================================================================-->
     <script src="{{ asset('form/vendor/animsition/js/animsition.min.js') }}"></script>
@@ -264,12 +265,17 @@
             });
         })
     </script>
+
+
     <script src="{{ asset('form/vendor/daterangepicker/moment.min.js') }}"></script>
     <script src="{{ asset('form/vendor/daterangepicker/daterangepicker.js') }}"></script>
     <!--===============================================================================================-->
     <script src="{{ asset('form/vendor/countdowntime/countdowntime.js') }}"></script>
     <!--===============================================================================================-->
+
+
     <script src="{{ asset('form/js/main.js') }}"></script>
+
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
     <script>
@@ -280,6 +286,7 @@
         }
 
         gtag('js', new Date());
+
         gtag('config', 'UA-23581568-13');
     </script>
     <script>
@@ -324,4 +331,8 @@
             })
         });
     </script>
+
+
+
+
 {% endblock %}

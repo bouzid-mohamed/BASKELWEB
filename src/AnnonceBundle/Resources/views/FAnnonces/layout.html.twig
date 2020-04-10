@@ -1,7 +1,8 @@
+{% if is_granted('IS_AUTHENTICATED_FULLY') %}
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Elite Shoppy an Ecommerce Online Shopping Category Flat Bootstrap Responsive Website Template |Men's :: w3layouts</title>
+    <title>Baskel</title>
     <!--/tags -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -95,34 +96,21 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             <li class="active menu__item"><a class="menu__link" href="index.html">Home <span class="sr-only">(current)</span></a></li>
                             <li class=" menu__item"><a class="menu__link" href="about.html">About</a></li>
                             <li class="dropdown menu__item menu__item--current">
-                                <a href="#" class="dropdown-toggle menu__link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Men's wear <span class="caret"></span></a>
+                                <a href="#" class="dropdown-toggle menu__link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Annonces<span class="caret"></span></a>
                                 <ul class="dropdown-menu multi-column columns-3">
                                     <div class="agile_inner_drop_nav_info">
                                         <div class="col-sm-6 multi-gd-img1 multi-gd-text ">
-                                            <a href="mens.html"><img src="{{ asset('layouts/images/top2.jpg') }}" alt=" "/></a>
+                                            <a href="{{ path('Annonces_allVente') }}"><img src="{{ asset('layouts/images/facebook.png') }}" alt=" "/></a>
                                         </div>
                                         <div class="col-sm-3 multi-gd-img">
                                             <ul class="multi-column-dropdown">
-                                                <li><a href="mens.html">Clothing</a></li>
-                                                <li><a href="mens.html">Wallets</a></li>
-                                                <li><a href="mens.html">Footwear</a></li>
-                                                <li><a href="mens.html">Watches</a></li>
-                                                <li><a href="mens.html">Accessories</a></li>
-                                                <li><a href="mens.html">Bags</a></li>
-                                                <li><a href="mens.html">Caps & Hats</a></li>
+                                                <li><a href="{{ path('Annonces_allVente') }}">Annonces Vente</a></li>
+                                                <li><a href="{{ path('Annonces_allLocation') }}">Annonces Location</a></li>
+                                                <li><a href="{{ path('Annonces_allEchanges') }}">Annonces Echange</a></li>
+
                                             </ul>
                                         </div>
-                                        <div class="col-sm-3 multi-gd-img">
-                                            <ul class="multi-column-dropdown">
-                                                <li><a href="mens.html">Jewellery</a></li>
-                                                <li><a href="mens.html">Sunglasses</a></li>
-                                                <li><a href="mens.html">Perfumes</a></li>
-                                                <li><a href="mens.html">Beauty</a></li>
-                                                <li><a href="mens.html">Shirts</a></li>
-                                                <li><a href="mens.html">Sunglasses</a></li>
-                                                <li><a href="mens.html">Swimwear</a></li>
-                                            </ul>
-                                        </div>
+
                                         <div class="clearfix"></div>
                                     </div>
                                 </ul>
@@ -359,9 +347,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             Echange</label>
                         <ul>
                             <ul>
-                                <li><a href="mens.html">Tous les annonces </a></li>
-                                <li><a href="mens.html">Mes Annonces</a></li>
-                                <li><a href="mens.html">Ajouter une Annonce</a></li>
+                                <li><a href="{{ path('Annonces_allEchanges') }}">Tous les annonces </a></li>
+                                <li><a href="{{ path('Ann_userE/', { 'id':  app.user.id }) }}">Mes Annonces</a></li>
+                                <li><a href="{{ path('FAddEchange', { 'id':  app.user.id }) }}">Ajouter une Annonce</a></li>
 
                             </ul>
                             </li>
@@ -721,3 +709,4 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script type="text/javascript" src="{{ asset('layouts/js/bootstrap.js') }}"></script>
 </body>
 </html>
+{% endif %}

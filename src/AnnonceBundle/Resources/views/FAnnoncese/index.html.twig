@@ -1,135 +1,42 @@
 {% extends "@Annonce/FAnnonces/layout.html.twig" %}
+{% block contentt %}
+    <h5>Annonces <span>Echange</span></h5>
+{% endblock %}
 {% block content %}
-
-
-
-    <div class="bikes">
-
-    <div class="product-head" style="margin-left:28px " >
-        <a href="{{ path('FAddEchange') }}"> <span style="text-align:center">Ajouter Annonce</span></a> <span></span>
-    </div>
-
-    {% if(nbr>=4) %}
-    <div class="bikes">
-        <div class="singlespeed-sec">
-
-            <a href="{{ path('Ann_userE/', { 'id':  user }) }}"><h3>Mes Annonces</h3></a>
-            <div class="bikes-grids">
-                <ul id="flexiselDemo1">
-                    {% set i = 0 %}
-                    {% for annonce in annoncesuser %}
-                        {% if(i<4) %}
-                            <li>
-                                <img src="{{ asset('uploads/Annonces/')~annonce.photo }}" height="150px" width="90px"
-                                     alt=""/>
-                                <div class="bike-info">
-                                    <div class="model">
-                                        <h4>{{ annonce.user.nom }}<span>{{ annonce.date|date("m/d/Y") }} </span></h4>
-                                    </div>
-                                    <div class="model-info">
-
-                                        <a href="{{ path('Ann_userE/', { 'id':  user }) }}">Consulter</a>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </div>
-                                <div class="viw">
-                                    <a href="{{ path('Ann_userE/', { 'id':  user }) }}">Voir Tous</a>
-                                </div>
-                            </li>
-                            {% set i=i+1 %}
-                        {% endif %}
-                    {% endfor %}
-                </ul>
-                <script type="text/javascript">
-                    $(window).load(function () {
-                        $("#flexiselDemo1").flexisel({
-                            visibleItems: 3,
-                            animationSpeed: 1000,
-                            autoPlay: true,
-                            autoPlaySpeed: 3000,
-                            pauseOnHover: true,
-                            enableResponsiveBreakpoints: true,
-                            responsiveBreakpoints: {
-                                portrait: {
-                                    changePoint: 480,
-                                    visibleItems: 1
-                                },
-                                landscape: {
-                                    changePoint: 640,
-                                    visibleItems: 2
-                                },
-                                tablet: {
-                                    changePoint: 768,
-                                    visibleItems: 3
-                                }
-                            }
-                        });
-                    });
-                </script>
-                <script type="text/javascript" src="{{ asset('front/js/jquery.flexisel.js') }}"></script>
-            </div>
-        </div>
-        {% endif %}
-        {% if(nbr>0) %}
-            {% if(nbr<4) %}
-                <div class="mountain-sec">
-
-                    <a href="{{ path('Ann_userE/', { 'id':  user }) }}"><h3>Mes Annonces</h3></a>
-
-
-                    {% for annonce in annoncesuser %}
-                        <a href="single.html">
-                            <div class="bike">
-                                <img src="{{ asset('uploads/Annonces/')~annonce.photo }}" height="150px" width="90px"
-                                     alt=""/>
-                                <div class="bike-cost">
-                                    <div class="bike-mdl">
-                                        <h4>{{ annonce.user.nom }} <span>{{ annonce.date|date("m/d/Y") }}</span></h4>
-                                    </div>
-                                    <div class="bike-cart">
-                                        <a class="buy"href="{{ path('show_annonceE/', { 'id': annonce.annId }) }}">Consulter</a>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </div>
-                                <div class="fast-viw">
-                                    <a href="{{ path('update_annoncee/', { 'id': annonce.annId }) }}"
-                                       style="background-color: #00b286;">Edit</a>
-                                    <a href="{{ path('delete_FannonceE/', { 'id': annonce.annId }) }}"
-                                       style="background-color: red;"
-                                       onclick="return confirm('Voulez vous supprimer cette annonce ?')">Delete</a>
-                                </div>
-                            </div>
-                        </a> {% endfor %}
-                    <div class="clearfix"></div>
-                </div>
-            {% endif %}
-        {% endif %}
-
-
-        <div class="singlespeed-sec">
-            <h2>Tous les Annonces D'Echange  </h2>
-
-
-            {% for annonce in annoncesv %}
-                <a href="single.html">
-                    <div class="bike">
-                        <img src="{{ asset('uploads/Annonces/')~annonce.photo }}" height="150px" width="90px" alt=""/>
-                        <div class="bike-cost">
-                            <div class="bike-mdl">
-                                <h4>{{ annonce.user.nom }}<span>{{ annonce.date|date("m/d/Y") }}</span></h4>
-                            </div>
-                            <div class="bike-cart">
-                                <a class="buy"
-                                   href="{{ path('show_annonceE/', { 'id': annonce.annId }) }}">Consulter</a>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
-                        <div class="fast-viw">
-                            <a href="{{ path('show_annonceE/', { 'id': annonce.annId }) }}">Consulter détails</a>
+    {% for annonce in annoncesv %}
+        <div class="col-md-3 product-men">
+            <div class="men-pro-item simpleCart_shelfItem">
+                <div class="men-thumb-item">
+                    <img src="{{ asset('uploads/Annonces/')~annonce.photo }}" height="200px" width="150 px" alt="" class="pro-image-front">
+                    <img src="{{ asset('uploads/Annonces/')~annonce.photo }}" alt=""  height="200px" width="150px" class="pro-image-back">
+                    <div class="men-cart-pro">
+                        <div class="inner-men-cart-pro">
+                            <a  href="{{ path('show_annonceE/', { 'id': annonce.annId }) }}" class="link-product-add-cart">Consulter</a>
                         </div>
                     </div>
-                </a> {% endfor %}
-            <div class="clearfix"></div>
+                    <span class="product-new-top"> {{ annonce.user.nom }}</span>
+
+                </div>
+                <div class="item-info-product ">
+                    <h4><a >  Vélo pour échange</a></h4>
+                    <div class="info-product-price">
+                        {{ annonce.date|date("m/d/Y") }}
+                    </div>
+                    <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out button2">
+
+                        <a  href="{{ path('show_annonceE/', { 'id': annonce.annId }) }}"><input type="submit" name="submit" value="Consulter" class="button" style="color: white ;" /></a>
+
+                    </div>
+
+                </div>
+            </div>
+
         </div>
+    {% endfor %}
+    <div class="clearfix"> </div>
+
+    </div>
+    <div class="navigation" style="margin-top: 30px; text-align: right;" >
+        {{ knp_pagination_render(annoncesv) }}
     </div>
 {% endblock %}

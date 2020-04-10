@@ -1,5 +1,6 @@
-{% extends "@Annonce/FAnnonces/layout.html.twig" %}
+{% extends "@Annonce/FAnnonces/formlayout.html.twig" %}
 {% block content %}
+
     <script>
         function myfunction() {
             var e = document.getElementById("gouva");
@@ -54,7 +55,7 @@
                 opt.text = "Ariana Ville";
                 sel.add(opt);
                 var opt1 = document.createElement("option");
-                opt1.text = "Ettadhamen";
+                opt1.text = "Ettadhamen" ;
                 sel.add(opt1);
                 var opt2 = document.createElement('option');
                 opt2.text = "Kalaat Landlous";
@@ -82,7 +83,6 @@
 
             }
         }
-
         function fun() {
 
         }
@@ -94,12 +94,10 @@
     <!--===============================================================================================-->
     <link rel="icon" type="image/png" href="{{ asset('form/images/icons/favicon.ico') }}"/>
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('form/vendor/bootstrap/css/bootstrap.min.css') }}">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('form/fonts/font-awesome-4.7.0/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" type="text/css" href= "{{ asset('form/fonts/font-awesome-4.7.0/css/font-awesome.min.css') }}">
     <!--===============================================================================================-->
-    <link rel="stylesheet" type="text/css"
-          href="{{ asset('form/fonts/iconic/css/material-design-iconic-font.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('form/fonts/iconic/css/material-design-iconic-font.min.css') }}">
     <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="{{ asset('form/vendor/animate/animate.css') }}">
     <!--===============================================================================================-->
@@ -116,7 +114,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('form/css/util.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('form/css/main.css') }}">
 
-    <div class="container-contact100" style="background-image: url('../front/images/a.jpg'); ">
+    <div class="container-contact100"  style="background-color: #9fcdff" >
         <div class="wrap-contact100">
             <form class="contact100-form validate-form" method="post" enctype="multipart/form-data">
                 {{ form_start(form) }}
@@ -223,7 +221,9 @@
                 {{ form_end (form) }}
             </form>
         </div>
+
     </div>
+
     <script src="{{ asset('assets/node_modules/dropify/dist/js/dropify.min.js') }}"></script>
     <!--===============================================================================================-->
     <script src="{{ asset('form/vendor/animsition/js/animsition.min.js') }}"></script>
@@ -233,18 +233,19 @@
     <!--===============================================================================================-->
     <script src="{{ asset('form/vendor/select2/select2.min.js') }}"></script>
     <script>
-        $(".js-select2").each(function () {
+        $(".js-select2").each(function(){
             $(this).select2({
                 minimumResultsForSearch: 20,
                 dropdownParent: $(this).next('.dropDownSelect2')
             });
 
 
-            $(".js-select2").each(function () {
-                $(this).on('select2:close', function (e) {
-                    if ($(this).val() == "Please chooses") {
+            $(".js-select2").each(function(){
+                $(this).on('select2:close', function (e){
+                    if($(this).val() == "Please chooses") {
                         $('.js-show-service').slideUp();
-                    } else {
+                    }
+                    else {
                         $('.js-show-service').slideUp();
                         $('.js-show-service').slideDown();
                     }
@@ -252,26 +253,28 @@
             });
         })
     </script>
+
+
     <script src="{{ asset('form/vendor/daterangepicker/moment.min.js') }}"></script>
-    <script src="{{ asset('form/vendor/daterangepicker/daterangepicker.js') }}"></script>
+    <script src= "{{ asset('form/vendor/daterangepicker/daterangepicker.js') }}"></script>
     <!--===============================================================================================-->
     <script src="{{ asset('form/vendor/countdowntime/countdowntime.js') }}"></script>
     <!--===============================================================================================-->
+
+
     <script src="{{ asset('form/js/main.js') }}"></script>
+
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
-
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-
+        function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
+
         gtag('config', 'UA-23581568-13');
     </script>
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
             // Basic
             $('.dropify').dropify();
 
@@ -288,21 +291,21 @@
             // Used events
             var drEvent = $('#input-file-events').dropify();
 
-            drEvent.on('dropify.beforeClear', function (event, element) {
+            drEvent.on('dropify.beforeClear', function(event, element) {
                 return confirm("Do you really want to delete \"" + element.file.name + "\" ?");
             });
 
-            drEvent.on('dropify.afterClear', function (event, element) {
+            drEvent.on('dropify.afterClear', function(event, element) {
                 alert('File deleted');
             });
 
-            drEvent.on('dropify.errors', function (event, element) {
+            drEvent.on('dropify.errors', function(event, element) {
                 console.log('Has Errors');
             });
 
             var drDestroy = $('#input-file-to-destroy').dropify();
             drDestroy = drDestroy.data('dropify')
-            $('#toggleDropify').on('click', function (e) {
+            $('#toggleDropify').on('click', function(e) {
                 e.preventDefault();
                 if (drDestroy.isDropified()) {
                     drDestroy.destroy();
@@ -312,4 +315,8 @@
             })
         });
     </script>
+
+
+
+
 {% endblock %}

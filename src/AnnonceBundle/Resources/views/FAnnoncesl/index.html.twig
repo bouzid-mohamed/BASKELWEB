@@ -15,7 +15,6 @@
                         </div>
                     </div>
                     <span class="product-new-top"> {{ annonce.user.nom }}</span>
-
                 </div>
                 <div class="item-info-product ">
                     <h4><a >  Vélo à Louer</a></h4>
@@ -24,18 +23,13 @@
                         {{ annonce.prixjour }} Dt
                     </div>
                     <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out button2">
-
                         <a  href="{{ path('show_annoncel/', { 'id': annonce.annId }) }}"><input type="submit" name="submit" value="Consulter" class="button" style="color: white ;" /></a>
-
                     </div>
-
                 </div>
             </div>
-
         </div>
     {% endfor %}
     <div class="clearfix"> </div>
-
     </div>
     <div class="navigation" style="margin-top: 30px; text-align: right;" >
         {{ knp_pagination_render(annoncesv) }}

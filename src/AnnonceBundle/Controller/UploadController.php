@@ -38,11 +38,11 @@ class UploadController extends Controller
         }
         return $this->render('@Annonce/Upload/index.html.twig', array('form' => $form->createView()));
     }
-    
+
 
     function moveFile($dossierSource, $dossierDestination)
     {
-         copy($dossierSource,  $dossierDestination);
+        copy($dossierSource,  $dossierDestination);
     }
     public function extract($from , $to) {
         $path = $from ;
@@ -70,14 +70,14 @@ class UploadController extends Controller
         $s="" ;
 
 
-       foreach ($tout as $tout ){
+        foreach ($tout as $tout ){
 
 
-           $s= $s." <li><a href=".$tout->getHref().">".$tout->getNom()."</a></li>" ;
+            $s= $s." <li><a href=".$tout->getHref().">".$tout->getNom()."</a></li>" ;
         }
 
 
-       return new Response($s) ;
+        return new Response($s) ;
     }
 
 

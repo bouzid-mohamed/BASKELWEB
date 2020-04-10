@@ -38,7 +38,6 @@
                                 <th>Photo</th>
                                 <th>Gouvernerat</th>
                                 <th>Delegation</th>
-                                <th>Description</th>
                                 <th>Date</th>
                                 <th>Action</th>
                             </tr>
@@ -50,7 +49,6 @@
                                     <td> <img src="{{ asset('uploads/Annonces/')~annonce.photo }}" alt="iMac" width="80"> </td>
                                     <td>{{ annonce.gouvernorat}}</td>
                                     <td>{{ annonce.delegation}}</td>
-                                    <td>{{ annonce.description}}</td>
                                     <td> {{ annonce.date|date("m/d/Y")}}</td>
                                     <td><a href="{{ path('afficher_annonceE/', { 'id': annonce.annId }) }}" title="Afficher" data-toggle="tooltip"><i class="ti-eye"></i></a>
                                         <a href="{{ path('edit_annonceE/', { 'id': annonce.annId }) }}" class="text-inverse p-r-10" data-toggle="tooltip" title="Editer"><i class="ti-marker-alt"></i></a>
